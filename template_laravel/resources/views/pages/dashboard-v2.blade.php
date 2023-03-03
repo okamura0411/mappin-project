@@ -28,7 +28,7 @@
 	</ol>
 	<!-- END breadcrumb -->
 	<!-- BEGIN page-header -->
-	<h1 class="page-header">Dashboard v2 <small>header small text goes here...</small></h1>
+	<h1 class="page-header">Github使えてるし、連携もOK!<small>header small text goes here...</small></h1>
 	<!-- END page-header -->
 	<!-- BEGIN row -->
 	<div class="row">
