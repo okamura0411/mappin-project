@@ -120,8 +120,6 @@ THE SOFTWARE.
         this.options.pixelWidth = columns * scale;
         this.options.pixelHeight = rows * scale;
 
-        //el.css("width", this.options.pixelWidth);
-        //el.css("height", this.options.pixelHeight);
         var self = this;
         var lineLabels = [];
         var supportsCanvas = $("<canvas></canvas>")[0].getContext;
