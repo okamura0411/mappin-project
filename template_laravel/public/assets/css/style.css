@@ -12,7 +12,7 @@
     {
         margin: 0;
         width: 500px;
-        height:410px;
+        height:600px;
         background-color: white;
     }
 
@@ -25,9 +25,9 @@
 
     #legend
     {
-        float: left;
-        width: 250px;
+        width: 1000px;
         height:400px;
+        text-align: end;
     }
 
     #legend div
@@ -38,6 +38,7 @@
     #legend span
     {
         margin: 5px 5px 5px 0;
+                text-align: end;
     }
     .subway-map span
     {

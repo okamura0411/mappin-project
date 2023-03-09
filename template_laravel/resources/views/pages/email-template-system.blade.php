@@ -6,37 +6,40 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 </head>
 <body>
-    <div class="subway-map" data-columns="20" data-rows="16" data-cellSize="40" data-legendId="legend" data-textClass="text" data-gridNumbers="true" data-grid="ture" data-lineWidth="8">
-        <ul data-color="#B0CB02" data-label="jQuery Widgets">          
-            <li data-coords="2,2"></li>  
-            <li data-coords="4,2"><a href="http://jqueryui.com/demos/autocomplete/">Auto\ncomplete</a></li>  
-            <li data-coords="5,3" data-dir="E"></li>  
-            <li data-coords="5,7" data-marker="@station" data-labelPos="W"><a href="http://jqueryui.com/demos/slider/">Slider</a></li> <!-- marker-only node -->  
-            <li data-coords="6,4" data-dir="S" data-marker="interchange" data-markerInfo="h5"><a href="http://jqueryui.com/demos/datepicker/">Date\npicker</a></li>  
-            <li data-coords="7,4"></li>  
-            <li data-coords="7.15,8" data-marker="@station" data-labelPos="E"><a href="http://jqueryui.com/demos/dialog/">Dialog</a></li>  <!-- marker-only node, moved to the right by 0.15 -->
-            <li data-coords="8,3" data-dir="E"></li>  
-            <li data-coords="8,2"></li>  
-            <li data-coords="9,1" data-dir="N"></li>  
-            <li data-coords="10,2" data-dir="E" data-marker="interchange" data-labelPos="E"><a href="http://jqueryui.com/demos/button/">Button</a></li>  
-            <li data-coords="10,5"></li>  
-            <li data-coords="9,6" data-dir="S" data-marker="station"><a href="http://jqueryui.com/demos/progressbar/">Progress\nbar</a></li>  
-            <li data-coords="6,9"></li>  
-            <li data-coords="5,8" data-dir="W"></li>  
-            <li data-coords="5,7"></li>  
-            <li data-coords="4,6" data-dir="N"></li>  
-            <li data-coords="2,6"><a href="http://jqueryui.com/demos/tabs/">Tabs</a></li>  
-            <li data-coords="2,2" data-marker="interchange" data-labelPos="W"><a href="http://jqueryui.com/demos/accordion/">Accordion</a></li>  
+    <div class="subway-map" data-columns="20" data-rows="13" data-cellSize="50" data-legendId="legend" data-textClass="text" data-gridNumbers="false" data-grid="false" data-lineWidth="10">
+        <ul data-color="#B0CB02" data-label="山手線">
+            <li data-coords="8,2"data-labelPos="N">目白</li>
+            <li data-coords="9,2"data-labelPos="N">池袋</li>
+            <li data-coords="10,2"data-labelPos="N">大塚</li>
+            <li data-coords="11,2"data-labelPos="N">巣鴨</li>
+            <li data-coords="12,2"data-labelPos="N">駒込</li>
+            <li data-coords="13,2"data-labelPos="N">田端</li>
+            <li data-coords="14,3"data-dir="E"data-labelPos="E">西日暮里</li>
+            <li data-coords="14,4"data-labelPos="E">日暮里</li>
+            <li data-coords="14,5"data-labelPos="E">鶯谷</li>
+            <li data-coords="14,6"data-labelPos="E">上野</li>
+            <li data-coords="14,7"data-labelPos="E">御徒町</li>
+            <li data-coords="14,8"data-labelPos="E">秋葉原</li>
+            <li data-coords="14,9"data-labelPos="E">神田</li>
+            <li data-coords="14,10"data-labelPos="E">東京</li>
+            <li data-coords="14,11"data-labelPos="E">有楽町</li>
+            <li data-coords="13,12"data-dir="S">新橋</li>
+            <li data-coords="12,12">浜松町</li>
+            <li data-coords="11,12">田町</li>
+            <li data-coords="10,12">高輪\nゲートウェイ</li>
+            <li data-coords="9,12">品川</li>
+            <li data-coords="8,12">大崎</li>
+            <li data-coords="7,11"data-dir="W" data-labelPos="W">五反田</li>
+            <li data-coords="7,10"data-labelPos="W">目黒</li>
+            <li data-coords="7,9"data-labelPos="W">恵比寿</li>
+            <li data-coords="7,8"data-labelPos="W">渋谷</li>
+            <li data-coords="7,7"data-labelPos="W">原宿</li>
+            <li data-coords="7,6"data-labelPos="W">代々木</li>
+            <li data-coords="7,5"data-labelPos="W">新宿</li>
+            <li data-coords="7,4"data-labelPos="W">新大久保</li>
+            <li data-coords="7,3"data-dir="E"data-labelPos="W">高田馬場</li>
+            <li data-coords="8,2"></li>
         </ul>
-        {{-- <ul data-color="#FF7936 " data-label="jQuery Interactions" data-shiftCoords="0,-1" data-outline="true" data-dotted="true">      
-            <li data-coords="2,6"></li> 
-            <li data-coords="2,5.9" data-marker="@interchange"> </li> <!-- marker-only node, moved up by 0.10 -->
-            <li data-coords="5,6" data-marker="@station" data-labelPos="N"><a href="http://jqueryui.com/demos/selectable/">Selectable</a></li>  
-            <li data-coords="6,6"></li>  
-            <li data-coords="7,3" data-marker="@station" data-labelPos="W"><a href="http://jqueryui.com/demos/resizeable/">Resizeable</a></li>  
-            <li data-coords="7,5" data-dir="E" data-marker="station" data-labelPos="E"><a href="http://jqueryui.com/demos/droppable/">Droppable</a></li>  
-            <li data-coords="7,1" data-marker="interchange" data-labelPos="W"><a href="http://jqueryui.com/demos/draggable/">Draggable</a></li>  
-        </ul> --}}
     </div>
     <div id="legend"></div>
     <script type="text/javascript">
