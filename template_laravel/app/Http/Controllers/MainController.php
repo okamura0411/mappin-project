@@ -17,9 +17,7 @@ class MainController extends Controller {
     public function emailTemplateSystem() {
         return view('pages/system');
     }
-    public function calendar() {
-        return view('pages/calendar');
-    }
+
     public function galleryV1() {
         return view('pages/gallery-v1');
     }

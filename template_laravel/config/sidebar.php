@@ -24,11 +24,6 @@ return [
 		'url' => '/system',
 		'route-name' => 'subway'
 	],[
-		'icon' => 'fa fa-sitemap',
-		'title' => 'Calendar',
-		'url' => '/calendar',
-		'route-name' => 'calendar'
-	],[
 		'icon' => 'fa fa-image',
 		'title' => 'Gallery',
 		'url' => 'javascript:;',
