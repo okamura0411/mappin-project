@@ -27,4 +27,8 @@ class MainController extends Controller {
     public function registerV3() {
         return view('pages/register-v3');
     }
+    public function Dropzone() {
+        return view('pages/dropzone');
+    }
+    
 }

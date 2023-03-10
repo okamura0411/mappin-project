@@ -5,11 +5,9 @@
 @push('css')
 	<link href="/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
 	<link href="/assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
-	<link href="/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
 @endpush
 
 @push('scripts')
-	<script src="/assets/plugins/gritter/js/jquery.gritter.js"></script>
 	<script src="/assets/plugins/flot/source/jquery.canvaswrapper.js"></script>
 	<script src="/assets/plugins/flot/source/jquery.colorhelpers.js"></script>
 	<script src="/assets/plugins/flot/source/jquery.flot.js"></script>
@@ -39,8 +37,7 @@
 @section('content')
 	<!-- BEGIN breadcrumb -->
 	<ol class="breadcrumb float-xl-end">
-		<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-		<li class="breadcrumb-item active">Dashboard</li>
+		<li class="breadcrumb-item"><a href="javascript:;">新規登録</a></li>
 	</ol>
 	<!-- END breadcrumb -->
 	<!-- BEGIN page-header -->

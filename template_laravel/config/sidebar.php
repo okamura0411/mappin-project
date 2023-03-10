@@ -5,7 +5,7 @@ return [
   'menu' => [
 		[
 		'icon' => 'fa fa-sitemap',
-		'title' => 'dashboard/v1',
+		'title' => '新規登録',
 		'url' => '/dashboard/v1',
 		'route-name' => 'dashboard-v1'
 	],[
@@ -24,14 +24,14 @@ return [
 		'url' => '/system',
 		'route-name' => 'subway'
 	],[
+		'icon' => 'fa fa-star',
+		'title' => 'dropzone',
+		'url' => '/dropzone',
+		'route-name' => 'dropzone'
+	],[
 		'icon' => 'fa fa-image',
 		'title' => 'Gallery',
-		'url' => 'javascript:;',
-		'caret' => true,
-		'sub_menu' => [[
-			'url' => '/gallery/v1',
-			'title' => 'Gallery v1',
-			'route-name' => 'gallery-v1'
-		]]
+		'url' => '/gallery/v1',
+		'route-name' => 'gallery-v1'
 	]]
 ];

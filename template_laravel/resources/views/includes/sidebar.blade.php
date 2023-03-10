@@ -16,11 +16,10 @@
 					<div class="menu-profile-info">
 						<div class="d-flex align-items-center">
 							<div class="flex-grow-1">
-								Sean Ngu
+								アカウントサービス
 							</div>
 							<div class="menu-caret ms-auto"></div>
 						</div>
-						<small>Front end developer</small>
 					</div>
 				</a>
 			</div>
@@ -28,13 +27,13 @@
 				<div class="menu-item pt-5px">
 					<a href="javascript:;" class="menu-link">
 						<div class="menu-icon"><i class="fa fa-cog"></i></div>
-						<div class="menu-text">Settings</div>
+						<div class="menu-text">設定</div>
 					</a>
 				</div>
 				<div class="menu-item">
 					<a href="javascript:;" class="menu-link">
 						<div class="menu-icon"><i class="fa fa-pencil-alt"></i></div>
-						<div class="menu-text"> Send Feedback</div>
+						<div class="menu-text"> お問い合わせ</div>
 					</a>
 				</div>
 				<div class="menu-item pb-5px">
