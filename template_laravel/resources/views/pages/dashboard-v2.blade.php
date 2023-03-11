@@ -5,7 +5,6 @@
 @push('css')
 	<link href="/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
 	<link href="/assets/plugins/datepickk/dist/datepickk.min.css" rel="stylesheet" />
-	<link href="/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
 	<link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
 @endpush
 
@@ -15,7 +14,6 @@
 	<script src="/assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
 	<script src="/assets/plugins/jvectormap-content/world-mill.js"></script>
 	<script src="/assets/plugins/datepickk/dist/datepickk.min.js"></script>
-	<script src="/assets/plugins/gritter/js/jquery.gritter.js"></script>
 	<script src="/assets/js/demo/dashboard-v2.js"></script>
 @endpush
 
