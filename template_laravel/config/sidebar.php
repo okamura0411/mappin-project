@@ -9,15 +9,20 @@ return [
 		'url' => '/dashboard/v1',
 		'route-name' => 'dashboard-v1'
 	],[
-		'icon' => 'fa fa-sitemap',
-		'title' => 'dashboard/v2',
-		'url' => '/dashboard/v2',
-		'route-name' => 'dashboard-v2'
+		'icon' => 'fa fa-image',
+		'title' => '一覧表示',
+		'url' => '/gallery/v1',
+		'route-name' => 'gallery-v1'
 	],[
 		'icon' => 'fa fa-sitemap',
-		'title' => 'dashboard/v3',
+		'title' => '情報修正',
 		'url' => '/dashboard/v3',
 		'route-name' => 'dashboard-v3'
+	],[
+		'icon' => 'fa fa-sitemap',
+		'title' => '緊急対応',
+		'url' => '/dashboard/v2',
+		'route-name' => 'dashboard-v2'
 	],[
 		'icon' => 'fa fa-sitemap',
 		'title' => 'subway',
@@ -28,10 +33,5 @@ return [
 		'title' => 'dropzone',
 		'url' => '/dropzone',
 		'route-name' => 'dropzone'
-	],[
-		'icon' => 'fa fa-image',
-		'title' => 'Gallery',
-		'url' => '/gallery/v1',
-		'route-name' => 'gallery-v1'
 	]]
 ];
