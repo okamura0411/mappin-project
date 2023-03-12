@@ -5,6 +5,8 @@
 @push('css')
 	<link href="/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
 	<link href="/assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+		<!-- dropbox -->
+	<link href="/assets/plugins/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
 @endpush
 
 @push('scripts')
@@ -32,6 +34,8 @@
 	<script src="/assets/plugins/jvectormap-content/world-mill.js"></script>
 	<script src="/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
 	<script src="/assets/js/demo/dashboard.js"></script>
+		<!-- dropbox -->
+	<script src="/assets/plugins/dropzone/dist/min/dropzone.min.js"></script>
 @endpush
 
 @section('content')
@@ -46,10 +50,10 @@
 				</div>
 				{{-- この中にデータが表示されている --}}
 				<div class="panel-body pe-1">
-					<div id="interactive-chart" class="h-500px">
-						{{-- ここに直接入れればいいのか？？ --}}
+					<div id="interactive-chart" class="h-400px">
 					</div>
 				</div>
+				
 			</div>
 		</div>
 		<div class="col-xl-4">
@@ -58,18 +62,10 @@
 					<h4 class="panel-title">詳細情報</h4>
 				</div>
 				<div class="table-responsive">
-
-					{{-- DropBoxを挿入する。 --}}
-					
 					<table class="table table-panel align-middle mb-0">
 						<form action="">
-							<thead>
-								<tr>
-									<th style="width:110px;">損傷入力項目</th>
-								</tr>
-							</thead>
 							<tbody>
-								<tr>
+								{{-- <tr>
 									<td nowrap><label class="badge bg-default text-gray-900">路線名</label></td>
 									<td>
 										<select name="line" id='line'>
@@ -77,7 +73,7 @@
 												<option value="TY">中央線</option>
 										</select>
 									</td>
-								</tr>
+								</tr> --}}
 								<tr>
 									<td nowrap><label class="badge bg-default text-gray-900">駅名</label></td>
 									<td>
@@ -130,16 +126,14 @@
 								<tr>
 									<td nowrap><label class="badge bg-default text-gray-900">詳細な場所</label></td>
 									<td>
-										<input type="text" name="place" placeholder='例）上りホーム4号車1番ドア前天井' style="width:230px;">
+										<input type="text" name="place" placeholder='例）上りホーム4号車1番ドア前' style="width:200px;">
 									</td>
 								</tr>
 								<tr>
 									<td nowrap><label class="badge bg-default text-gray-900">位置情報</label></td>
-									<td>X軸<input type="number" id="Xnum" name="Xnum"min="10" max="100" step="0.5" style="margin-left:10px;"></td>
-								</tr>
-								<tr>
-									<td nowrap></td>
-									<td>Y軸<input type="number" id="Ynum" name="Ynum"min="10" max="100" step="0.5" style="margin-left:10px;"></td>
+									<td>X軸<input type="number" id="Xnum" name="Xnum"min="10" max="100" step="0.5" style="margin-left:10px;">
+										Y軸<input type="number" id="Ynum" name="Ynum"min="10" max="100" step="0.5" style="margin-left:10px;">
+									</td>
 								</tr>
 								<tr>
 									<td nowrap><label class="badge bg-default text-gray-900">損傷内容</label></td>
@@ -175,7 +169,7 @@
 								<tr>
 									<td nowrap><label class="badge bg-default text-gray-900">備考欄・進捗</label></td>
 									<td>
-										<textArea name="remarks" rows="3" cols="35" placeholder='天井から2秒毎滴下・お客様への影響がないため通常対応とする'></textArea>
+										<textArea name="remarks" rows="3" cols="30" placeholder='天井から2秒毎滴下・お客様への影響がないため通常対応とする'></textArea>
 									</td>
 								</tr>
 								<tr>
@@ -191,4 +185,11 @@
 		</div>
 	</div>
 	<!-- END row -->
+	<div id="dropzone">
+  <form action="/upload" class="dropzone needsclick" id="demo-upload">
+    <div class="dz-message needsclick">
+      Drop files <b>here</b> or <b>click</b> to upload.<br />
+    </div>
+  </form>
+</div>
 @endsection

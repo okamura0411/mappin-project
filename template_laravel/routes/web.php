@@ -1,6 +1,6 @@
 <?php
 Route::get('/', function () {
-	return redirect('/dashboard/v2');
+	return redirect('/dashboard/v1');
 });
 Route::get('/dashboard/v1', 'MainController@dashboardV1')->name('dashboard-v1');
 Route::get('/dashboard/v2', 'MainController@dashboardV2')->name('dashboard-v2');

@@ -25133,7 +25133,7 @@ body #Datepickk .d-calendar .d-tables.range:not(.before) input:not(.single):chec
 }
 
 .dropzone {
-  border: 2px dashed var(--app-component-border-color) !important;
+  border: 2px dashed #3F3F3F  !important;
   background: none !important;
 }
 .dropzone .dz-message {
