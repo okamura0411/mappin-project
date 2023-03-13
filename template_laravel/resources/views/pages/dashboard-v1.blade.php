@@ -35,9 +35,7 @@
 	<script src="/assets/plugins/jvectormap-content/world-mill.js"></script>
 	<script src="/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
 	<script src="/assets/js/demo/dashboard.js"></script>
-		<!-- dropbox -->
 	<script src="/assets/plugins/dropzone/dist/min/dropzone.min.js"></script>
-
 @endpush
 
 @section('content')
@@ -53,39 +51,39 @@
 				{{-- この中にデータが表示されている --}}
 				<div class="panel-body pe-1">
 					<div id="subway" class="h-400px">
-						    <div class="subway-map" data-columns="20" data-rows="13" data-cellSize="50" data-legendId="legend" data-textClass="text" data-gridNumbers="ture" data-grid="ture" data-lineWidth="10">
+						    <div class="subway-map" data-columns="20" data-rows="12" data-cellSize="34" data-legendId="legend" data-textClass="text" data-gridNumbers="false" data-grid="ture" data-lineWidth="10">
 								<ul data-color="#B0CB02" data-label="山手線">
-									<li data-coords="8,2"data-labelPos="N">目白</li>
-									<li data-coords="9,2"data-labelPos="N">池袋</li>
-									<li data-coords="10,2"data-labelPos="N">大塚</li>
-									<li data-coords="11,2"data-labelPos="N">巣鴨</li>
-									<li data-coords="12,2"data-labelPos="N">駒込</li>
-									<li data-coords="13,2"data-labelPos="N">田端</li>
-									<li data-coords="14,3"data-dir="E"data-labelPos="E">西日暮里</li>
-									<li data-coords="14,4"data-labelPos="E">日暮里</li>
-									<li data-coords="14,5"data-labelPos="E">鶯谷</li>
-									<li data-coords="14,6"data-labelPos="E">上野</li>
-									<li data-coords="14,7"data-labelPos="E">御徒町</li>
-									<li data-coords="14,8"data-labelPos="E">秋葉原</li>
-									<li data-coords="14,9"data-labelPos="E">神田</li>
-									<li data-coords="14,10"data-labelPos="E">東京</li>
-									<li data-coords="14,11"data-labelPos="E">有楽町</li>
-									<li data-coords="13,12"data-dir="S">新橋</li>
-									<li data-coords="12,12">浜松町</li>
-									<li data-coords="11,12">田町</li>
-									<li data-coords="10,12">高輪<br>ゲートウェイ</li>
-									<li data-coords="9,12">品川</li>
-									<li data-coords="8,12">大崎</li>
-									<li data-coords="7,11"data-dir="W" data-labelPos="W">五反田</li>
-									<li data-coords="7,10"data-labelPos="W">目黒</li>
-									<li data-coords="7,9"data-labelPos="W">恵比寿</li>
-									<li data-coords="7,8"data-labelPos="W">渋谷</li>
-									<li data-coords="7,7"data-labelPos="W">原宿</li>
-									<li data-coords="7,6"data-labelPos="W">代々木</li>
-									<li data-coords="7,5"data-labelPos="W">新宿</li>
-									<li data-coords="7,4"data-labelPos="W">新大久保</li>
-									<li data-coords="7,3"data-dir="E"data-labelPos="W">高田馬場</li>
-									<li data-coords="8,2"></li>
+									<li data-coords="8,1"data-labelPos="N">目白</li>
+									<li data-coords="9,1"data-labelPos="N">池袋</li>
+									<li data-coords="10,1"data-labelPos="N">大塚</li>
+									<li data-coords="11,1"data-labelPos="N">巣鴨</li>
+									<li data-coords="12,1"data-labelPos="N">駒込</li>
+									<li data-coords="13,1"data-labelPos="N">田端</li>
+									<li data-coords="14,2"data-dir="E"data-labelPos="E">西日暮里</li>
+									<li data-coords="14,3"data-labelPos="E">日暮里</li>
+									<li data-coords="14,4"data-labelPos="E">鶯谷</li>
+									<li data-coords="14,5"data-labelPos="E">上野</li>
+									<li data-coords="14,6"data-labelPos="E">御徒町</li>
+									<li data-coords="14,7"data-labelPos="E">秋葉原</li>
+									<li data-coords="14,8"data-labelPos="E">神田</li>
+									<li data-coords="14,9"data-labelPos="E">東京</li>
+									<li data-coords="14,10"data-labelPos="E">有楽町</li>
+									<li data-coords="13,11"data-dir="S">新橋</li>
+									<li data-coords="12,11">浜松町</li>
+									<li data-coords="11,11">田町</li>
+									<li data-coords="10,11"data-labelPos="S">TGW</li>
+									<li data-coords="9,11">品川</li>
+									<li data-coords="8,11">大崎</li>
+									<li data-coords="7,10"data-dir="W" data-labelPos="W">五反田</li>
+									<li data-coords="7,9"data-labelPos="W">目黒</li>
+									<li data-coords="7,8"data-labelPos="W">恵比寿</li>
+									<li data-coords="7,7"data-labelPos="W">渋谷</li>
+									<li data-coords="7,6"data-labelPos="W">原宿</li>
+									<li data-coords="7,5"data-labelPos="W">代々木</li>
+									<li data-coords="7,4"data-labelPos="W">新宿</li>
+									<li data-coords="7,3"data-labelPos="W">新大久保</li>
+									<li data-coords="7,2"data-dir="E"data-labelPos="W">高田馬場</li>
+									<li data-coords="8,1"></li>
 								</ul>
 							</div>
 							<div id="legend"></div>
