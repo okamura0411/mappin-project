@@ -71,7 +71,7 @@ var handleVectorMap = function() {
 				{latLng: [15.3, -61.38], name: 'Dominica'},
 				{latLng: [-20.2, 57.5], name: 'Mauritius'},
 				{latLng: [26.02, 50.55], name: 'Bahrain'},
-				{latLng: [0.33, 6.73], name: 'S‹o TomŽ and Pr’ncipe'}
+				{latLng: [0.33, 6.73], name: 'Sï¿½o Tomï¿½ and Prï¿½ncipe'}
 			]
 		});
 	}
@@ -98,7 +98,7 @@ var handleInteractiveChart = function () {
 			[11, 18], [12, 30], [13, 25], [14, 25], [15, 30], [16, 27], [17, 20], [18, 18], [19, 31], [20, 23]
 		];
 		var xLabel = [
-			[1,''],[2,''],[3,'May 15'],[4,''],[5,''],[6,'May 19'],[7,''],[8,''],[9,'May 22'],[10,''],
+			[1,''],[2,''],[3,'May '],[4,''],[5,''],[6,'May 19'],[7,''],[8,''],[9,'May 22'],[10,''],
 			[11,''],[12,'May 25'],[13,''],[14,''],[15,'May 28'],[16,''],[17,''],[18,'May 31'],[19,''],[20,'']
 		];
 		
@@ -271,18 +271,18 @@ var handleDashboardTodolist = function() {
 	});
 };
 
-var handleDashboardGritterNotification = function() {
-	setTimeout(function() {
-		$.gritter.add({
-			title: 'Welcome back, Admin!',
-			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus lacus ut lectus rutrum placerat.',
-			image: '../assets/img/user/user-2.jpg',
-			sticky: true,
-			time: '',
-			class_name: 'my-sticky-class'
-		});
-	}, 1000);
-};
+// var handleDashboardGritterNotification = function() {
+// 	setTimeout(function() {
+// 		$.gritter.add({
+// 			title: 'Welcome back, Admin!',
+// 			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus lacus ut lectus rutrum placerat.',
+// 			image: '../assets/img/user/user-2.jpg',
+// 			sticky: true,
+// 			time: '',
+// 			class_name: 'my-sticky-class'
+// 		});
+// 	}, 1000);
+// };
 
 var Dashboard = function () {
 	"use strict";

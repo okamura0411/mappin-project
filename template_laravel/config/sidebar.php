@@ -33,5 +33,19 @@ return [
 		'title' => 'dropzone',
 		'url' => '/dropzone',
 		'route-name' => 'dropzone'
+	],[
+		'icon' => 'fa fa-key',
+		'title' => 'Login & Register',
+		'url' => 'javascript:;',
+		'caret' => true,
+		'sub_menu' => [[
+			'url' => '/login/v3',
+			'title' => 'Login',
+			'route-name' => 'login-v3'
+		],[
+			'url' => '/register/v3',
+			'title' => 'Register',
+			'route-name' => 'register-v3'
+		]]
 	]]
 ];

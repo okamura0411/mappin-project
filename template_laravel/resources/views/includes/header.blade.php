@@ -16,7 +16,7 @@
 			<span class="icon-bar"></span>
 		</button>
 		@endif
-		<a href="/" class="navbar-brand"><span class="navbar-logo"></span> <b>Color</b> Admin</a>
+		<a href="/" class="navbar-brand"><span class="navbar-logo"></span> <b>Mappin</b></a>
 		@if ($appHeaderMegaMenu && !$appSidebarTwo)
 		<button type="button" class="navbar-mobile-toggler" data-bs-toggle="collapse" data-bs-target="#top-navbar">
 			<span class="fa-stack fa-lg">
@@ -71,9 +71,9 @@
 		
 		<div class="navbar-item navbar-user dropdown">
 			<a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-				<img src="/assets/img/user/user-13.jpg" alt="" /> 
+				{{-- <img src="/assets/img/user/user-13.jpg" alt="" />  --}}
 				<span>
-					<span class="d-none d-md-inline">Adam Schwartz</span>
+					<span class="d-none d-md-inline">施設保全課（岡村）</span>
 					<b class="caret"></b>
 				</span>
 			</a>

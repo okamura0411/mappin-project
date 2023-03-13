@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <title>Subway Map</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -26,7 +26,7 @@
             <li data-coords="13,12"data-dir="S">新橋</li>
             <li data-coords="12,12">浜松町</li>
             <li data-coords="11,12">田町</li>
-            <li data-coords="10,12">高輪\nゲートウェイ</li>
+            <li data-coords="10,12">高輪<br>ゲートウェイ</li>
             <li data-coords="9,12">品川</li>
             <li data-coords="8,12">大崎</li>
             <li data-coords="7,11"data-dir="W" data-labelPos="W">五反田</li>
