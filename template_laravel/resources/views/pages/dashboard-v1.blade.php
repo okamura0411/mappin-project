@@ -37,9 +37,8 @@
 	<script src="/assets/js/demo/dashboard.js"></script>
 		<!-- dropbox -->
 	<script src="/assets/plugins/dropzone/dist/min/dropzone.min.js"></script>
-	<script type="text/javascript" src="{{ asset('assets/js/jquery-3.6.4.min') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/jquery.subwayMap-0.5.3.js') }}"></script>
-
+	<script src="{{ asset('assets/js/jquery-3.6.4.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.subwayMap-0.5.3.js') }}"></script>
 @endpush
 
 @section('content')
@@ -91,9 +90,9 @@
 								</ul>
 							</div>
 							<div id="legend"></div>
-							<script type="text/javascript">
+							{{-- <script type="text/javascript">
 								$(".subway-map").subwayMap({ debug: true });
-							</script>
+							</script> --}}
 					</div>
 				</div>
 				
@@ -226,5 +225,4 @@
     </div>
   </form>
 </div>
-
 @endsection
