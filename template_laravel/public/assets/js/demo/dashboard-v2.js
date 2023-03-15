@@ -134,7 +134,6 @@ var handleVisitorsAreaChart = function() {
 					})
 				}, 0)
 			});
-
 		nv.utils.windowResize(stackedAreaChart.update);
 		return stackedAreaChart;
 	});
@@ -205,7 +204,7 @@ var handleVisitorsVectorMap = function() {
 					fill: fillColor,
 					"fill-opacity": 1,
 					stroke: 'none',
-					"stroke-width": 0.4,
+					"stroke-width": 0.1,
 					"stroke-opacity": 1
 				},
 				hover: {
@@ -277,3 +276,4 @@ var DashboardV2 = function () {
 $(document).ready(function() {
 	DashboardV2.init();
 });
+

@@ -6,7 +6,6 @@
 	<link href="/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
 	<link href="/assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 	<link href="/assets/plugins/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
-	<link href="/assets/plugins/dropzone/dist/min/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 @endpush
 
@@ -49,9 +48,9 @@
 					<h4 class="panel-title">新規登録</h4>
 				</div>
 				{{-- この中にデータが表示されている --}}
-				<div class="panel-body pe-1">
+				<div id="map-contents">
 					<div id="subway" class="h-400px">
-						    <div class="subway-map" data-columns="20" data-rows="12" data-cellSize="34" data-legendId="legend" data-textClass="text" data-gridNumbers="false" data-grid="ture" data-lineWidth="10">
+						    <div class="subway-map" data-columns="20" data-rows="12" data-cellSize="33" data-legendId="legend" data-textClass="text" data-gridNumbers="false" data-grid="ture" data-lineWidth="10">
 								<ul data-color="#B0CB02" data-label="山手線">
 									<li data-coords="8,1"data-labelPos="N">目白</li>
 									<li data-coords="9,1"data-labelPos="N">池袋</li>
@@ -94,7 +93,6 @@
 							</script>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 		<div class="col-xl-4">

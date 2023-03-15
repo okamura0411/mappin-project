@@ -27,9 +27,8 @@
 
     #legend
     {
-        width: 1000px;
-        height:400px;
-        text-align: end;
+        width: 150px;
+        margin-top: -20px;
     }
 
     #legend div
@@ -40,9 +39,17 @@
     #legend span
     {
         margin: 5px 5px 5px 0;
-                text-align: end;
+                text-align: center;
     }
     .subway-map span
     {
         margin: 5px 5px 5px 0;
     }
+    /* .subway-map{
+        width: 100%;
+        background-color: red;
+    } */
+    /* .subway-map canvas{
+        text-align: center;
+        width: 60%;
+    } */

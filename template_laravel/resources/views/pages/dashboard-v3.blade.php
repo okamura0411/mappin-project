@@ -28,7 +28,7 @@
 	</ol>
 	<!-- END breadcrumb -->
 	<!-- BEGIN page-header -->
-	<h1 class="page-header mb-3">Dashboard v3</h1>
+	<h1 class="page-header mb-3">見本</h1>
 	<!-- END page-header -->
 	<!-- BEGIN daterange-filter -->
 	<div class="d-sm-flex align-items-center mb-3">
