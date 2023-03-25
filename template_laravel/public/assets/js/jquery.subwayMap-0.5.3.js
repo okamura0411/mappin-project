@@ -576,7 +576,7 @@ THE SOFTWARE.
           y +
           "px;left:" +
           x +
-          "px;z-index:200;'";
+          "px;z-index:2003;'";
         var topOffset = 0;
         var centerOffset = "-50px";
         switch (data.labelPos.toLowerCase()) {

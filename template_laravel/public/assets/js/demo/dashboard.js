@@ -270,20 +270,6 @@ var handleDashboardTodolist = function() {
 		}
 	});
 };
-
-// var handleDashboardGritterNotification = function() {
-// 	setTimeout(function() {
-// 		$.gritter.add({
-// 			title: 'Welcome back, Admin!',
-// 			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus lacus ut lectus rutrum placerat.',
-// 			image: '../assets/img/user/user-2.jpg',
-// 			sticky: true,
-// 			time: '',
-// 			class_name: 'my-sticky-class'
-// 		});
-// 	}, 1000);
-// };
-
 var Dashboard = function () {
 	"use strict";
 	return {
@@ -310,3 +296,17 @@ $(document).ready(function() {
 });
 
 // 記載開始
+$(document).on("click", "span", function () {
+	alert($(this).text());
+	
+});
+// hover Action
+// $("span").hover(
+//   () => {
+//     $("span").css("background-color", "#00f");
+//   },
+//   () => {
+//     //マウスカーソルが離れた時の処理
+//     $("span").css("background-color", "#f00");
+//   }
+// );

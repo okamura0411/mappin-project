@@ -63,6 +63,7 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
 :root {
   --bs-default: #e9ecef;
   --bs-primary: #348fe2;
@@ -34584,4 +34585,8 @@ a.editable-click:hover {
 /* Helper Display */
 .hide {
   display: none !important;
+}
+#ikebukuroMap{
+  font-size: 100px;
+  color: blue;
 }

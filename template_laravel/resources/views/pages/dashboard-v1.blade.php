@@ -6,6 +6,9 @@
 	<link href="/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
 	<link href="/assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 	<link href="/assets/plugins/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
+	<link href="/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="/assets/plugins/datepickk/dist/datepickk.min.css" rel="stylesheet" />
+	<link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 @endpush
 
@@ -52,36 +55,36 @@
 					<div id="subway" class="h-400px">
 						    <div class="subway-map" data-columns="20" data-rows="12" data-cellSize="33" data-legendId="legend" data-textClass="text" data-gridNumbers="false" data-grid="ture" data-lineWidth="10">
 								<ul data-color="#B0CB02" data-label="山手線">
-									<li data-coords="8,1"data-labelPos="N">目白</li>
-									<li data-coords="9,1"data-labelPos="N">池袋</li>
-									<li data-coords="10,1"data-labelPos="N">大塚</li>
-									<li data-coords="11,1"data-labelPos="N">巣鴨</li>
+									<li data-coords="8,1"></li>
+									<li class='test' data-coords="9,1"data-labelPos="N">池袋</li>
+									<li data-coords="10,1"></li>
+									<li data-coords="11,1"></li>
 									<li data-coords="12,1"data-labelPos="N">駒込</li>
-									<li data-coords="13,1"data-labelPos="N">田端</li>
-									<li data-coords="14,2"data-dir="E"data-labelPos="E">西日暮里</li>
-									<li data-coords="14,3"data-labelPos="E">日暮里</li>
-									<li data-coords="14,4"data-labelPos="E">鶯谷</li>
+									<li data-coords="13,1"></li>
+									<li data-coords="14,2"data-dir="E"data-labelPos="E"></li>
+									<li data-coords="14,3"></li>
+									<li data-coords="14,4"></li>
 									<li data-coords="14,5"data-labelPos="E">上野</li>
-									<li data-coords="14,6"data-labelPos="E">御徒町</li>
-									<li data-coords="14,7"data-labelPos="E">秋葉原</li>
-									<li data-coords="14,8"data-labelPos="E">神田</li>
+									<li data-coords="14,6"></li>
+									<li data-coords="14,7"></li>
+									<li data-coords="14,8"></li>
 									<li data-coords="14,9"data-labelPos="E">東京</li>
-									<li data-coords="14,10"data-labelPos="E">有楽町</li>
-									<li data-coords="13,11"data-dir="S">新橋</li>
-									<li data-coords="12,11">浜松町</li>
-									<li data-coords="11,11">田町</li>
-									<li data-coords="10,11"data-labelPos="S">TGW</li>
+									<li data-coords="14,10"></li>
+									<li data-coords="13,11"data-dir="S"></li>
+									<li data-coords="12,11"data-labelPos="S">浜松町</li>
+									<li data-coords="11,11"></li>
+									<li data-coords="10,11"></li>
 									<li data-coords="9,11">品川</li>
-									<li data-coords="8,11">大崎</li>
+									<li data-coords="8,11"></li>
 									<li data-coords="7,10"data-dir="W" data-labelPos="W">五反田</li>
-									<li data-coords="7,9"data-labelPos="W">目黒</li>
-									<li data-coords="7,8"data-labelPos="W">恵比寿</li>
+									<li data-coords="7,9"></li>
+									<li data-coords="7,8"></li>
 									<li data-coords="7,7"data-labelPos="W">渋谷</li>
 									<li data-coords="7,6"data-labelPos="W">原宿</li>
-									<li data-coords="7,5"data-labelPos="W">代々木</li>
+									<li data-coords="7,5"></li>
 									<li data-coords="7,4"data-labelPos="W">新宿</li>
-									<li data-coords="7,3"data-labelPos="W">新大久保</li>
-									<li data-coords="7,2"data-dir="E"data-labelPos="W">高田馬場</li>
+									<li data-coords="7,3"></li>
+									<li data-coords="7,2"></li>
 									<li data-coords="8,1"></li>
 								</ul>
 							</div>
@@ -92,7 +95,11 @@
 								$(".subway-map").subwayMap({ debug: true });
 							</script>
 					</div>
-				</div>
+						<div id="ikebukuro" class="panel panel-inverse hide" style="margin-top:-19.9px;" data-sortable-id="index-1">
+							<div id="ikebukuroMap" class="bg-slate-50" style="height: 416px;">池袋</div>
+							<div class="returnSubway">路線図に戻る。</div>
+						</div>
+			    </div>
 			</div>
 		</div>
 		<div class="col-xl-4">
