@@ -300,4 +300,3 @@ $(document).on("click", "span", function () {
 	alert($(this).text());
 });
 
-
