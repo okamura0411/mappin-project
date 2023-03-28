@@ -298,15 +298,6 @@ $(document).ready(function() {
 // 記載開始
 $(document).on("click", "span", function () {
 	alert($(this).text());
-	
 });
-// hover Action
-// $("span").hover(
-//   () => {
-//     $("span").css("background-color", "#00f");
-//   },
-//   () => {
-//     //マウスカーソルが離れた時の処理
-//     $("span").css("background-color", "#f00");
-//   }
-// );
+
+
