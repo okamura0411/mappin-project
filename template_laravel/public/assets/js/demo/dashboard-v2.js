@@ -114,7 +114,7 @@ var handleVisitorsAreaChart = function() {
 			.duration(300);
 
 		stackedAreaChart.xAxis.tickFormat(function(d) { 
-			var monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+			// var monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 			d = new Date(d);
 			d = monthsName[d.getMonth()] + ' ' + d.getDate();
 			return d ;
@@ -134,6 +134,7 @@ var handleVisitorsAreaChart = function() {
 					})
 				}, 0)
 			});
+
 		nv.utils.windowResize(stackedAreaChart.update);
 		return stackedAreaChart;
 	});
@@ -204,7 +205,7 @@ var handleVisitorsVectorMap = function() {
 					fill: fillColor,
 					"fill-opacity": 1,
 					stroke: 'none',
-					"stroke-width": 0.1,
+					"stroke-width": 0.4,
 					"stroke-opacity": 1
 				},
 				hover: {
@@ -276,4 +277,3 @@ var DashboardV2 = function () {
 $(document).ready(function() {
 	DashboardV2.init();
 });
-

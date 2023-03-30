@@ -90,7 +90,7 @@ var handleInteractiveChart = function () {
 	if ($('#interactive-chart').length !== 0) {
 	
 		var data1 = [ 
-			[1, 110], [2, 50], [3, 60], [4, 60], [5, 60], [6, 65], [7, 75], [8, 90], [9, 100], [10, 105], 
+			[1, 40], [2, 50], [3, 60], [4, 60], [5, 60], [6, 65], [7, 75], [8, 90], [9, 100], [10, 105], 
 			[11, 110], [12, 110], [13, 120], [14, 130], [15, 135],[16, 145], [17, 132], [18, 123], [19, 135], [20, 150] 
 		];
 		var data2 = [
@@ -98,7 +98,7 @@ var handleInteractiveChart = function () {
 			[11, 18], [12, 30], [13, 25], [14, 25], [15, 30], [16, 27], [17, 20], [18, 18], [19, 31], [20, 23]
 		];
 		var xLabel = [
-			[1,''],[2,''],[3,'May 11115'],[4,''],[5,''],[6,'May 19'],[7,''],[8,''],[9,'May 22'],[10,''],
+			[1,''],[2,''],[3,'May '],[4,''],[5,''],[6,'May 19'],[7,''],[8,''],[9,'May 22'],[10,''],
 			[11,''],[12,'May 25'],[13,''],[14,''],[15,'May 28'],[16,''],[17,''],[18,'May 31'],[19,''],[20,'']
 		];
 		
@@ -270,6 +270,20 @@ var handleDashboardTodolist = function() {
 		}
 	});
 };
+
+// var handleDashboardGritterNotification = function() {
+// 	setTimeout(function() {
+// 		$.gritter.add({
+// 			title: 'Welcome back, Admin!',
+// 			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus lacus ut lectus rutrum placerat.',
+// 			image: '../assets/img/user/user-2.jpg',
+// 			sticky: true,
+// 			time: '',
+// 			class_name: 'my-sticky-class'
+// 		});
+// 	}, 1000);
+// };
+
 var Dashboard = function () {
 	"use strict";
 	return {
@@ -294,9 +308,3 @@ var Dashboard = function () {
 $(document).ready(function() {
 	Dashboard.init();
 });
-
-// 記載開始
-$(document).on("click", "span", function () {
-	alert($(this).text());
-});
-

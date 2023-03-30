@@ -56,33 +56,33 @@
 						    <div class="subway-map" data-columns="20" data-rows="12" data-cellSize="33" data-legendId="legend" data-textClass="text" data-gridNumbers="false" data-grid="ture" data-lineWidth="10">
 								<ul data-color="#B0CB02" data-label="山手線">
 									<li data-coords="8,1"></li>
-									<li class='test' data-coords="9,1"data-labelPos="N">池袋</li>
+									<li class='test' data-coords="9,1"data-labelPos="N">Ikebukuro</li>
 									<li data-coords="10,1"></li>
 									<li data-coords="11,1"></li>
-									<li data-coords="12,1"data-labelPos="N">駒込</li>
+									<li data-coords="12,1"data-labelPos="N">Komagome</li>
 									<li data-coords="13,1"></li>
 									<li data-coords="14,2"data-dir="E"data-labelPos="E"></li>
 									<li data-coords="14,3"></li>
 									<li data-coords="14,4"></li>
-									<li data-coords="14,5"data-labelPos="E">上野</li>
+									<li data-coords="14,5"data-labelPos="E">Ueno</li>
 									<li data-coords="14,6"></li>
 									<li data-coords="14,7"></li>
 									<li data-coords="14,8"></li>
-									<li data-coords="14,9"data-labelPos="E">東京</li>
+									<li data-coords="14,9"data-labelPos="E">Tokyo</li>
 									<li data-coords="14,10"></li>
 									<li data-coords="13,11"data-dir="S"></li>
-									<li data-coords="12,11"data-labelPos="S">浜松町</li>
+									<li data-coords="12,11"data-labelPos="S">Hamamatucho</li>
 									<li data-coords="11,11"></li>
 									<li data-coords="10,11"></li>
-									<li data-coords="9,11">品川</li>
+									<li data-coords="9,11">Shinagawa</li>
 									<li data-coords="8,11"></li>
-									<li data-coords="7,10"data-dir="W" data-labelPos="W">五反田</li>
+									<li data-coords="7,10"data-dir="W" data-labelPos="W">Gotanda</li>
 									<li data-coords="7,9"></li>
 									<li data-coords="7,8"></li>
-									<li data-coords="7,7"data-labelPos="W">渋谷</li>
-									<li data-coords="7,6"data-labelPos="W">原宿</li>
+									<li data-coords="7,7"data-labelPos="W">Shibuya</li>
+									<li data-coords="7,6"data-labelPos="W">Harajuku</li>
 									<li data-coords="7,5"></li>
-									<li data-coords="7,4"data-labelPos="W">新宿</li>
+									<li data-coords="7,4"data-labelPos="W">Shinjuku</li>
 									<li data-coords="7,3"></li>
 									<li data-coords="7,2"></li>
 									<li data-coords="8,1"></li>
@@ -95,8 +95,9 @@
 								$(".subway-map").subwayMap({ debug: true });
 							</script>
 					</div>
-						<div id="ikebukuro" class="panel panel-inverse hide" style="margin-top:-19.9px;" data-sortable-id="index-1">
-							<div id="ikebukuroMap" class="bg-slate-50" style="height: 416px;">池袋</div>
+					{{-- 新しく表示させるcanvas --}}
+						<div id="canvasContainer" class="panel panel-inverse stationCanvas hide" data-sortable-id="index-1">
+								<canvas id="stationViewCanvas style="height: 390px;"></canvas>
 							<div class="returnSubway">路線図に戻る。</div>
 						</div>
 			    </div>
@@ -116,46 +117,18 @@
 									<td>
 										{{-- 駅名記載 --}}
 										<select name="station" id='station'>
-											<optgroup label="山手線" id="YM">
-												<option value="東京">東京</option>
-												<option value="有楽町">有楽町</option>
-												<option value="新橋">新橋</option>			
-												<option value="浜松町">浜松町</option>
-												<option value="田町">田町</option>			
-												<option value="高輪ゲートウェイ">高輪ゲートウェイ</option>
-												<option value="品川">品川</option>			
-												<option value="大崎">大崎</option>
-												<option value="五反田">五反田</option>			
-												<option value="目黒">目黒</option>
-												<option value="恵比寿">恵比寿</option>
-												<option value="渋谷">渋谷</option>
-												<option value="原宿">原宿</option>			
-												<option value="代々木">代々木</option>
-												<option value="新宿">新宿</option>			
-												<option value="新大久保">新大久保</option>
-												<option value="高田馬場">高田馬場</option>			
-												<option value="目白">目白</option>
-												<option value="池袋">池袋</option>			
-												<option value="大塚">大塚</option>
-												<option value="巣鴨">巣鴨</option>
-												<option value="駒込">駒込</option>
-												<option value="田端">田端</option>			
-												<option value="西日暮里">西日暮里</option>
-												<option value="日暮里">日暮里</option>			
-												<option value="鶯谷">鶯谷</option>
-												<option value="上野">上野</option>			
-												<option value="御徒町">御徒町</option>
-												<option value="秋葉原">秋葉原</option>			
-												<option value="神田">神田</option>
-											</optgroup>
-											<optgroup label="東横線" id="TY">
-												<option value="渋谷">渋谷</option>
-												<option value="代官山">代官山</option>
-												<option value="中目黒">中目黒</option>			
-												<option value="祐天寺">祐天寺</option>
-												<option value="学芸大学">学芸大学</option>			
-												<option value="都立大学">都立大学</option>
-												<option value="自由が丘">自由が丘</option>			
+											<optgroup label="YM" id="YM">
+												<option value="Blanck"></option>
+												<option value="Tokyo">Tokyo</option>
+												<option value="Hamamatucho">Hamamatucho</option>
+												<option value="Shinagawa">Shinagawa</option>			
+												<option value="Gotanda">Gotanda</option>			
+												<option value="Shibuya">Shibuya</option>
+												<option value="Harajuku">Harajuku</option>			
+												<option value="Shinjuku">Shinjuku</option>			
+												<option value="Ikebukuro">Ikebukuro</option>			
+												<option value="Komagome">Komagome</option>
+												<option value="Ueno">Ueno</option>			
 											</optgroup>
 										</select>
 									</td>

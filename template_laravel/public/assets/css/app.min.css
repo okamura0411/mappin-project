@@ -63,7 +63,6 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-
 :root {
   --bs-default: #e9ecef;
   --bs-primary: #348fe2;
@@ -19167,7 +19166,7 @@ code {
   right: -260px;
   top: 0;
   bottom: 0;
-  z-index: 3035;
+  z-index: 1035;
   background: var(--app-component-bg);
   transition: right 0.2s linear;
   border-radius: 4px 0 0 4px;
@@ -25134,7 +25133,7 @@ body #Datepickk .d-calendar .d-tables.range:not(.before) input:not(.single):chec
 }
 
 .dropzone {
-  border: 2px dashed #3F3F3F  !important;
+  border: 2px dashed var(--app-component-border-color) !important;
   background: none !important;
 }
 .dropzone .dz-message {
@@ -34585,8 +34584,4 @@ a.editable-click:hover {
 /* Helper Display */
 .hide {
   display: none !important;
-}
-#ikebukuroMap{
-  font-size: 100px;
-  color: blue;
 }
