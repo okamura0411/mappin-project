@@ -52,7 +52,7 @@
 				</div>
 				{{-- この中にデータが表示されている --}}
 				<div id="map-contents">
-					<div id="subway" class="h-400px">
+					<div id="subway" class="h-430px">
 						    <div class="subway-map" data-columns="20" data-rows="12" data-cellSize="33" data-legendId="legend" data-textClass="text" data-gridNumbers="false" data-grid="ture" data-lineWidth="10">
 								<ul data-color="#B0CB02" data-label="山手線">
 									<li data-coords="8,1"></li>
@@ -97,8 +97,20 @@
 					</div>
 					{{-- 新しく表示させるcanvas --}}
 						<div id="canvasContainer" class="panel panel-inverse stationCanvas hide" data-sortable-id="index-1">
-								<canvas id="stationViewCanvas style="height: 390px;"></canvas>
-							<div class="returnSubway">路線図に戻る。</div>
+							<style>
+							#stationViewCanvas {
+								height: 390px;
+								width: 600px;
+								margin-top: 20px;
+							}
+							  #canvasContainer{
+								display: flex;
+								justify-content: center;
+								align-items: center;
+							}
+							</style>
+							<canvas id="stationViewCanvas"></canvas>
+							<div class="returnSubway" style="display:flex-end">路線図に戻る。</div>
 						</div>
 			    </div>
 			</div>

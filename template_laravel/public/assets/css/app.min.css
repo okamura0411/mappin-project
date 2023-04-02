@@ -18852,7 +18852,6 @@ code {
 .panel {
   background-color: var(--app-component-bg);
   border: none;
-  margin-bottom: 1.246875rem;
   box-shadow: none;
   border-radius: 4px;
   display: flex;
