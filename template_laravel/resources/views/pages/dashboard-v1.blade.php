@@ -110,6 +110,7 @@
 							}
 							</style>
 							<canvas id="stationViewCanvas"></canvas>
+							<div class='pin'></div>
 							<div class="returnSubway" style="display:flex-end">路線図に戻る。</div>
 						</div>
 			    </div>
@@ -119,6 +120,7 @@
 			<div class="panel panel-inverse">
 				<div class="panel-heading">
 					<h4 class="panel-title">詳細情報</h4>
+
 				</div>
 				<div class="table-responsive">
 					<table class="table table-panel align-middle mb-0">
@@ -153,8 +155,8 @@
 								</tr>
 								<tr>
 									<td nowrap><label class="badge bg-default text-gray-900">位置情報</label></td>
-									<td>X軸<input type="number" id="Xnum" name="Xnum"min="10" max="100" step="0.5" style="margin-left:10px;">
-										Y軸<input type="number" id="Ynum" name="Ynum"min="10" max="100" step="0.5" style="margin-left:10px;">
+									<td>X軸<input type="number" id="Xnum" name="Xnum"min="0" max="1000" step="1" style="margin-left:10px;">
+										Y軸<input type="number" id="Ynum" name="Ynum"min="0" max="1000" step="1" style="margin-left:10px;">
 									</td>
 								</tr>
 								<tr>
@@ -179,6 +181,7 @@
 								</tr>
 								<tr>
 									<td nowrap><label class="badge bg-default text-gray-900">今後の対応</label></td>
+
 									<td>
 									<select name="action">
 									<!-- <option value="" selected disabled>選択してください</option> -->

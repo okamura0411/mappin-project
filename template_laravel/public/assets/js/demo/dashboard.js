@@ -309,87 +309,85 @@ $(document).ready(function() {
 	Dashboard.init();
 });
 
-// JS記載開始
-// $(document).on("click", "span", function () {
-//   let stationName = $(this).text();
-//   $("#station").val(stationName);
-//   $("#subway").addClass("hide");
-//   $("#canvasContainer").removeClass("hide");
+$(document).ready(function () {
+  $("span").click(function () {
+    let stationName = $(this).text();
+    $("#station").val(stationName);
+    $("#subway").addClass("hide");
+    $("#canvasContainer").removeClass("hide");
 
+    const canvas = document.getElementById("stationViewCanvas");
+    const ctx = canvas.getContext("2d");
 
-//   // 画像をCanvasに描画
-//   const canvas = document.getElementById("stationViewCanvas");
-//   const ctx = canvas.getContext("2d");
-//   const img = new Image();
-//   img.src = "../../images/station/" + stationName + ".png";
-//   img.onload = function () {
-//     canvas.width = img.width; // Canvasのサイズを画像のサイズに合わせる
-//     canvas.height = img.height;
-//     ctx.drawImage(img, 0, 0); // 描画位置を左上に指定する
-//   };
-//   img.onerror = function () {
-//     console.error("Failed to load image:", img.src);
-//   };
-// });
- $(document).ready(function () {
-   $("span").click(function () {
-     let stationName = $(this).text();
-     $("#station").val(stationName);
-	 $("#subway").addClass("hide");
-     $("#canvasContainer").removeClass("hide");
+    const img = new Image();
+    img.src = "../../images/station/" + stationName + ".png";
+    console.log(img.src);
+    img.onload = function () {
+      const aspectRatio = img.width / img.height;
+      const maxWidth = $(canvas).parent().width();
+      const maxHeight = $(canvas).parent().height();
+      let width, height;
 
-     const canvas = document.getElementById("stationViewCanvas");
-     const ctx = canvas.getContext("2d");
+      if (maxWidth / maxHeight > aspectRatio) {
+        // 縦に余白ができる場合
+        width = maxHeight * aspectRatio;
+        height = maxHeight;
+      } else {
+        // 横に余白ができる場合
+        width = maxWidth;
+        height = maxWidth / aspectRatio;
+      }
 
-     const img = new Image();
-     img.src = "../../images/station/" + stationName + ".png";
-	 console.log(img.src)
-     img.onload = function () {
-       const aspectRatio = img.width / img.height;
-       const maxWidth = $(canvas).parent().width();
-       const maxHeight = $(canvas).parent().height();
-       let width, height;
+      canvas.width = width;
+      canvas.height = height;
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+      ctx.drawImage(img, 0, 0, width, height); // サイズを指定して描画する
+    };
 
-       if (maxWidth / maxHeight > aspectRatio) {
-         // 縦に余白ができる場合
-         width = maxHeight * aspectRatio;
-         height = maxHeight;
-       } else {
-         // 横に余白ができる場合
-         width = maxWidth;
-         height = maxWidth / aspectRatio;
-       }
+    img.onerror = function () {
+      console.error("Failed to load image:", img.src);
+    };
+  });
 
-		canvas.width = width;
-		canvas.height = height;
-		canvas.style.width = width + "px";
-		canvas.style.height = height + "px";
-		ctx.drawImage(img, 0, 0, width, height); // サイズを指定して描画する
+  $("#stationViewCanvas").click(function (event) {
+    var x = event.offsetX;
+    var y = event.offsetY;
 
+    const canvas = document.getElementById("stationViewCanvas");
+    const ctx = canvas.getContext("2d");
 
-     };
+    // 新しいピンを描画する
+    const pin = document.querySelector(".pin");
+    const canvasOffsetLeft = canvas.offsetLeft;
+    const canvasOffsetTop = canvas.offsetTop;
+    pin.style.left = x + canvasOffsetLeft - 5 + "px";
+    pin.style.top = y + canvasOffsetTop - 5 + "px";
+    pin.classList.remove("hide");
 
-     img.onerror = function () {
-       console.error("Failed to load image:", img.src);
-     };
-   });
+    // 新しいマーカーの座標を保存する
+    markerX = x;
+    markerY = y;
 
-   $("#stationViewCanvas").click(function (event) {
-     var x = event.offsetX;
-     var y = event.offsetY;
+    // X座標を設定する
+    $("#Xnum").val(markerX);
 
-     const canvas = document.getElementById("stationViewCanvas");
-     const ctx = canvas.getContext("2d");
+    // Y座標を設定する
+    $("#Ynum").val(markerY);
 
-     ctx.fillStyle = "red";
-     ctx.beginPath();
-     ctx.arc(x, y, 5, 0, 2 * Math.PI);
-     ctx.fill();
-   });
+    // 背景画像を再描画する
+    const img = new Image();
+    img.src = "../../images/station/" + $("#station").val() + ".png";
+    img.onload = function () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    };
+  });
 
-   $(document).on("click", ".returnSubway", function () {
-     $("#canvasContainer").addClass("hide");
-     $("#subway").removeClass("hide");
-     $("#station").val("");
-   });
- });
+  $(document).on("click", ".returnSubway", function () {
+    $("#canvasContainer").addClass("hide");
+    $("#subway").removeClass("hide");
+    $("#station").val("");
+    $(".pin").addClass("hide"); // 追加
+  });
+});
