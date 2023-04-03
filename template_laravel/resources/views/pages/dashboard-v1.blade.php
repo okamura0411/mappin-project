@@ -59,7 +59,6 @@
 									<li class='test' data-coords="9,1"data-labelPos="N">Ikebukuro</li>
 									<li data-coords="10,1"></li>
 									<li data-coords="11,1"></li>
-									<li data-coords="12,1"data-labelPos="N">Komagome</li>
 									<li data-coords="13,1"></li>
 									<li data-coords="14,2"data-dir="E"data-labelPos="E"></li>
 									<li data-coords="14,3"></li>
@@ -141,7 +140,6 @@
 												<option value="Harajuku">Harajuku</option>			
 												<option value="Shinjuku">Shinjuku</option>			
 												<option value="Ikebukuro">Ikebukuro</option>			
-												<option value="Komagome">Komagome</option>
 												<option value="Ueno">Ueno</option>			
 											</optgroup>
 										</select>
