@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
 	return redirect('/dashboard/v1');
 });
@@ -10,3 +12,4 @@ Route::get('/system', 'MainController@emailTemplateSystem')->name('system');
 Route::get('/gallery/v1', 'MainController@galleryV1')->name('gallery-v1');
 Route::get('/login/v3', 'MainController@loginV3')->name('login-v3');
 Route::get('/register/v3', 'MainController@registerV3')->name('register-v3');
+Route::post('/store', [App\Http\Controllers\MainController::class, 'store'])->name('store');

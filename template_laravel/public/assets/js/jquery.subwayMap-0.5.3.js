@@ -646,9 +646,9 @@ THE SOFTWARE.
           "width:100px;" +
           (pos != "" ? pos : "") +
           ";position:absolute;top:" +
-          (y-110 + el.position().top - (topOffset > 0 ? topOffset : 0)) +
+          (y-130 + el.position().top - (topOffset > 0 ? topOffset : 0)) +
           "px;left:" +
-          (x-250 + el.position().left) +
+          (x-273 + el.position().left) +
           "px;z-index:2003;'";
         if (data.link != "")
           $(

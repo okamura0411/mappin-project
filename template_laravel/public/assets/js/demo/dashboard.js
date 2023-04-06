@@ -271,19 +271,6 @@ var handleDashboardTodolist = function() {
 	});
 };
 
-// var handleDashboardGritterNotification = function() {
-// 	setTimeout(function() {
-// 		$.gritter.add({
-// 			title: 'Welcome back, Admin!',
-// 			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus lacus ut lectus rutrum placerat.',
-// 			image: '../assets/img/user/user-2.jpg',
-// 			sticky: true,
-// 			time: '',
-// 			class_name: 'my-sticky-class'
-// 		});
-// 	}, 1000);
-// };
-
 var Dashboard = function () {
 	"use strict";
 	return {
@@ -309,6 +296,7 @@ $(document).ready(function() {
 	Dashboard.init();
 });
 
+// stationCanvasの表示・処理を記載
 $(document).ready(function () {
   $("span").click(function () {
     let stationName = $(this).text();
@@ -391,3 +379,35 @@ $(document).ready(function () {
     $(".pin").addClass("hide"); // 追加
   });
 });
+
+// registerボタンを押した際の処理
+Dropzone.options.uploadForm = {
+
+  autoProcessQueue: false,
+  uploadMultiple: true,
+  parallelUploads: 100,
+  maxFiles: 10,
+
+  // The setting up of the dropzone
+  init: function () {
+    var myDropzone = this;
+
+    // First change the button to actually tell Dropzone to process the queue.
+    this.element.querySelector("#register").addEventListener("click", function (e) {
+        // Make sure that the form isn't actually being sent.
+        e.preventDefault();
+        e.stopPropagation();
+        myDropzone.processQueue();
+      });
+
+    this.on("sendingmultiple", function () {
+
+    });
+    this.on("successmultiple", function (files, response) {
+
+    });
+    this.on("errormultiple", function (files, response) {
+
+    });
+  },
+};

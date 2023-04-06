@@ -56,3 +56,7 @@ $response = $kernel->handle(
 $response->send();
 
 $kernel->terminate($request, $response);
+
+if (getenv('APP_ENV') === 'local') {
+    $app->register(Barryvdh\Debugbar\ServiceProvider::class);
+}
