@@ -36,12 +36,11 @@
 	<script src="/assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
 	<script src="/assets/plugins/jvectormap-content/world-mill.js"></script>
 	<script src="/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-	<script src="/assets/plugins/dropzone/dist/min/dropzone.min.js"></script>
-	<script src="/assets/js/demo/dashboard.js"></script>
+
 @endpush
 
 @section('content')
-	<form action="/upload" class="dropzone needsclick" id="upload-form">
+	<form action="/store" class="dropzone needsclick" id="upload-form">
 		@csrf
 	<!-- BEGIN row -->
 		<div class="row">
@@ -211,4 +210,6 @@
 		ファイルをドラッグ＆ドロップしてしてください。<br>またはここをクリックして画像選択してください。
 		</div>
 	</form>
+	<script src="/assets/plugins/dropzone/dist/min/dropzone.min.js"></script>
+	<script src="/assets/js/demo/dashboard.js"></script>
 @endsection

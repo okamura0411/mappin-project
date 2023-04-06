@@ -380,34 +380,45 @@ $(document).ready(function () {
   });
 });
 
-// registerボタンを押した際の処理
 Dropzone.options.uploadForm = {
+  // フォーム要素のIDをキャメルケースで指定
+  autoProcessQueue: false, // ファイルのアップロードを自動的に処理しないようにする
+  uploadMultiple: true, // 複数のファイルをアップロードできるようにする
+  parallelUploads: 100, // 一度にアップロードできるファイルの最大数を設定する
+  maxFiles: 10, // アップロードできるファイルの最大数を設定する
 
-  autoProcessQueue: false,
-  uploadMultiple: true,
-  parallelUploads: 100,
-  maxFiles: 10,
-
-  // The setting up of the dropzone
   init: function () {
-    var myDropzone = this;
+    var myDropzone = this,
+      submitButton = document.querySelector("#register");
 
-    // First change the button to actually tell Dropzone to process the queue.
-    this.element.querySelector("#register").addEventListener("click", function (e) {
-        // Make sure that the form isn't actually being sent.
-        e.preventDefault();
-        e.stopPropagation();
-        myDropzone.processQueue();
-      });
-
-    this.on("sendingmultiple", function () {
-
+    submitButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      myDropzone.processQueue();
     });
-    this.on("successmultiple", function (files, response) {
 
+    myDropzone.on("sendingmultiple", function (data, xhr, formData) {
+      // フォームのフィールドを個別に追加
+      formData.append("station", document.getElementById("station").value);
+      formData.append("place", document.getElementsByName("place")[0].value);
+      formData.append("Xnum", document.getElementById("Xnum").value);
+      formData.append("Ynum", document.getElementById("Ynum").value);
+      formData.append("detail", document.getElementsByName("detail")[0].value);
+      formData.append("quantity",document.getElementsByName("quantity")[0].value);
+      formData.append("whose", document.getElementsByName("whose")[0].value);
+      formData.append("action", document.getElementsByName("action")[0].value);
+      formData.append("remarks",document.getElementsByName("remarks")[0].value);
     });
-    this.on("errormultiple", function (files, response) {
+		myDropzone.on("sending", function (file, xhr, formData) {
+		formData.append("filename", file.name);
+	});
 
+    myDropzone.on("successmultiple", function (files, response) {
+      // フォームの送信後の処理
+      window.location.replace("/home");
+    });
+    myDropzone.on("errormultiple", function (files, response) {
+    //   alert(response);
     });
   },
 };

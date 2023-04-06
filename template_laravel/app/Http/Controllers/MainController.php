@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Report;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+
 
 class MainController extends Controller {
     public function dashboardV1() {
@@ -33,41 +35,35 @@ class MainController extends Controller {
         return view('pages/dropzone');
     }
 
-        public function store(Request $request)
+    public function store(Request $request)
     {
-        // form1からのデータを受け取る
+        // フォームデータを取得する
         $station = $request->input('station');
         $place = $request->input('place');
-        $xNum = $request->input('Xnum');
-        $yNum = $request->input('Ynum');
+        $Xnum = $request->input('Xnum');
+        $Ynum = $request->input('Ynum');
         $detail = $request->input('detail');
         $quantity = $request->input('quantity');
         $whose = $request->input('whose');
         $action = $request->input('action');
         $remarks = $request->input('remarks');
-        
-        $filePaths = [];
-        if($request->hasFile('file')) {
-            foreach($request->file('file') as $file) {
-                $path = $file->store('public');
-                $filePaths[] = $path;
-            }
+
+      // アップロードされたファイルを保存する
+        $fileNames = [];
+        foreach ($request->file('file') as $file) {
+            // ファイル名をUTF-8に変換する
+            $fileName = mb_convert_encoding($file->getClientOriginalName(), 'UTF-8', 'auto');
+            // ファイルをstorage/app/public/に保存する
+            $filePath = $file->storeAs('public', $fileName);
+            // 保存されたファイルのパスを配列に追加する
+            $fileNames[] = $fileName;
         }
 
-        // ファイルのパスをデータベースに保存する
-        $report = new Report();
-        $report->station = $station;
-        $report->place = $place;
-        $report->x_num = $xNum;
-        $report->y_num = $yNum;
-        $report->detail = $detail;
-        $report->quantity = $quantity;
-        $report->whose = $whose;
-        $report->action = $action;
-        $report->remarks = $remarks;
-        $report->file_paths = implode(',', $filePaths);
-        $report->save();
-
-        return redirect('/');
+        // フォームデータとファイル名をテキストファイルに保存する
+        $data = "station:{$station}\nplace:{$place}\nXnum:{$Xnum}\nYnum:{$Ynum}\ndetail:{$detail}\nquantity:{$quantity}\nwhose:{$whose}\naction:{$action}\nremarks:{$remarks}\nfilename:" . implode(',', $fileNames);
+        Storage::put('sample.txt', $data);
+        
+        // リダイレクト先を設定する
+        return redirect('/home');
     }
 }
