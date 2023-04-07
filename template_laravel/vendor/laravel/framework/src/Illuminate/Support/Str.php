@@ -407,7 +407,8 @@ class Str
     public static function markdown($string, array $options = [])
     {
         $converter = new GithubFlavoredMarkdownConverter($options);
-        return (string) $converter->convert($string);
+
+        return (string) $converter->convertToHtml($string);
     }
 
     /**
@@ -606,18 +607,18 @@ class Str
      * @param  string  $subject
      * @return string
      */
-public static function replaceArray($search, array $replace, $subject)
-{
-    $segments = explode($search, $subject);
-    $result = $segments[0];
+    public static function replaceArray($search, array $replace, $subject)
+    {
+        $segments = explode($search, $subject);
 
-    foreach (array_slice($segments, 1) as $key => $segment) {
-        $result .= ($replace[$key] ?? $search) . $segment;
+        $result = array_shift($segments);
+
+        foreach ($segments as $segment) {
+            $result .= (array_shift($replace) ?? $search).$segment;
+        }
+
+        return $result;
     }
-    return $result;
-}
-
-
 
     /**
      * Replace the given value in the given string.
