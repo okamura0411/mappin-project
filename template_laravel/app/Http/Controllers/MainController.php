@@ -60,8 +60,9 @@ class MainController extends Controller {
         }
 
         // フォームデータとファイル名をテキストファイルに保存する
-        $data = "station:{$station}\nplace:{$place}\nXnum:{$Xnum}\nYnum:{$Ynum}\ndetail:{$detail}\nquantity:{$quantity}\nwhose:{$whose}\naction:{$action}\nremarks:{$remarks}\nfilename:" . implode(',', $fileNames);
-        Storage::put('sample.txt', $data);
+        $data = "station:{$station},place:{$place},Xnum:{$Xnum},Ynum:{$Ynum},detail:{$detail},quantity:{$quantity},whose:{$whose},action:{$action},remarks:{$remarks},filename:" . implode(',', $fileNames);
+        Storage::append('sample.txt', $data);
+
         
         // リダイレクト先を設定する
         return redirect('/home');

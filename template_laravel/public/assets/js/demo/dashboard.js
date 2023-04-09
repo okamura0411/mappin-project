@@ -381,14 +381,13 @@ $(document).ready(function () {
 });
 
 Dropzone.options.uploadForm = {
-  // フォーム要素のIDをキャメルケースで指定
   autoProcessQueue: false, // ファイルのアップロードを自動的に処理しないようにする
   uploadMultiple: true, // 複数のファイルをアップロードできるようにする
   parallelUploads: 100, // 一度にアップロードできるファイルの最大数を設定する
   maxFiles: 10, // アップロードできるファイルの最大数を設定する
 
   init: function () {
-    var myDropzone = this,
+    let myDropzone = this,
       submitButton = document.querySelector("#register");
 
     submitButton.addEventListener("click", function (e) {
@@ -398,7 +397,6 @@ Dropzone.options.uploadForm = {
     });
 
     myDropzone.on("sendingmultiple", function (data, xhr, formData) {
-      // フォームのフィールドを個別に追加
       formData.append("station", document.getElementById("station").value);
       formData.append("place", document.getElementsByName("place")[0].value);
       formData.append("Xnum", document.getElementById("Xnum").value);
