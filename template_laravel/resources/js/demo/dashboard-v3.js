@@ -552,4 +552,5 @@ var DashboardV3 = function () {
 
 $(document).ready(function() {
 	DashboardV3.init();
+	alert("222222222222")
 });
