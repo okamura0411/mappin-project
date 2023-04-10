@@ -431,7 +431,7 @@ Dropzone.options.uploadForm = {
 		alert("正常に登録完了しました！");
 		clearInputs();
         myDropzone.removeAllFiles(); // dropzoneに表示されているファイルを全て削除
-      }, 2000); // 1秒後に実行するように指定
+      }, 1300); // 1秒後に実行するように指定
     });
   },
 };

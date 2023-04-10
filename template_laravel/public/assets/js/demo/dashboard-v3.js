@@ -5,551 +5,464 @@ Author: Sean Ngu
 Website: http://www.seantheme.com/color-admin/
 */
 
-var handleTotalSalesSparkline = function() {
-	var options = {
-		chart: {
-			type: 'line',
-			width: 200,
-			height: 36,
-			sparkline: {
-				enabled: true
-			},
-			stacked: true
-		},
-		stroke: {
-			curve: 'smooth',
-			width: 3
-		},
-		fill: {
-			type: 'gradient',
-			gradient: {
-				opacityFrom: 1,
-				opacityTo: 1,
-				colorStops: [{
-					offset: 0,
-					color: app.color.blue,
-					opacity: 1
-				},
-				{
-					offset: 100,
-					color: app.color.indigo,
-					opacity: 1
-				}]
-			},
-		},
-		series: [{
-			data: [9452.37, 11018.87, 7296.37, 6274.29, 7924.05, 6581.34, 12918.14]
-		}],
-		tooltip: {
-			theme: 'dark',
-			fixed: {
-				enabled: false
-			},
-			x: {
-				show: false
-			},
-			y: {
-				title: {
-					formatter: function (seriesName) {
-						return ''
-					}
-				},
-				formatter: (value) => { return '$'+ convertNumberWithCommas(value) },
-			},
-			marker: {
-				show: false
-			}
-		},
-		responsive: [{
-			breakpoint: 3000,
-			options: {
-				chart: {
-					width: 130
-				}
-			}
-		},{
-			breakpoint: 1300,
-			options: {
-				chart: {
-					width: 100
-				}
-			}
-		},{
-			breakpoint: 1200,
-			options: {
-				chart: {
-					width: 200
-				}
-			}
-		},{
-			breakpoint: 576,
-			options: {
-				chart: {
-					width: 180
-				}
-			}
-		},{
-			breakpoint: 400,
-			options: {
-				chart: {
-					width: 120
-				}
-			}
-		}]
-	};
-	if ($('#total-sales-sparkline').length !== 0) {
-		new ApexCharts(document.querySelector('#total-sales-sparkline'), options).render();
-	}
+var handleVectorMap = function () {
+  "use strict";
+  if ($("#world-map").length !== 0) {
+    var fillColor =
+      $("#world-map").attr("data-theme") == "transparent"
+        ? "rgba(" + app.color.whiteRgb + ", .25)"
+        : app.color.gray600;
+    $("#world-map").vectorMap({
+      map: "world_mill",
+      scaleColors: [app.color.gray300, app.color.gray600],
+      normalizeFunction: "polynomial",
+      hoverOpacity: 0.5,
+      hoverColor: false,
+      zoomOnScroll: false,
+      markerStyle: {
+        initial: {
+          fill: app.color.teal,
+          stroke: "transparent",
+          r: 3,
+        },
+      },
+      regionStyle: {
+        initial: {
+          fill: fillColor,
+          "fill-opacity": 1,
+          stroke: "none",
+          "stroke-width": 0.4,
+          "stroke-opacity": 1,
+        },
+        hover: {
+          "fill-opacity": 0.8,
+        },
+        selected: {
+          fill: "yellow",
+        },
+        selectedHover: {},
+      },
+      focusOn: {
+        x: 0.5,
+        y: 0.5,
+        scale: 0,
+      },
+      backgroundColor: "transparent",
+      markers: [
+        { latLng: [41.9, 12.45], name: "Vatican City" },
+        { latLng: [43.73, 7.41], name: "Monaco" },
+        { latLng: [-0.52, 166.93], name: "Nauru" },
+        { latLng: [-8.51, 179.21], name: "Tuvalu" },
+        { latLng: [43.93, 12.46], name: "San Marino" },
+        { latLng: [47.14, 9.52], name: "Liechtenstein" },
+        { latLng: [7.11, 171.06], name: "Marshall Islands" },
+        { latLng: [17.3, -62.73], name: "Saint Kitts and Nevis" },
+        { latLng: [3.2, 73.22], name: "Maldives" },
+        { latLng: [35.88, 14.5], name: "Malta" },
+        { latLng: [12.05, -61.75], name: "Grenada" },
+        { latLng: [13.16, -61.23], name: "Saint Vincent and the Grenadines" },
+        { latLng: [13.16, -59.55], name: "Barbados" },
+        { latLng: [17.11, -61.85], name: "Antigua and Barbuda" },
+        { latLng: [-4.61, 55.45], name: "Seychelles" },
+        { latLng: [7.35, 134.46], name: "Palau" },
+        { latLng: [42.5, 1.51], name: "Andorra" },
+        { latLng: [14.01, -60.98], name: "Saint Lucia" },
+        { latLng: [6.91, 158.18], name: "Federated States of Micronesia" },
+        { latLng: [1.3, 103.8], name: "Singapore" },
+        { latLng: [1.46, 173.03], name: "Kiribati" },
+        { latLng: [-21.13, -175.2], name: "Tonga" },
+        { latLng: [15.3, -61.38], name: "Dominica" },
+        { latLng: [-20.2, 57.5], name: "Mauritius" },
+        { latLng: [26.02, 50.55], name: "Bahrain" },
+        { latLng: [0.33, 6.73], name: "S�o Tom� and Pr�ncipe" },
+      ],
+    });
+  }
 };
 
-var handleConversionRateSparkline = function() {
-	var options = {
-		chart: {
-			type: 'line',
-			width: 160,
-			height: 28,
-			sparkline: {
-				enabled: true
-			}
-		},
-		stroke: {
-			curve: 'smooth',
-			width: 3
-		},
-		fill: {
-			type: 'gradient',
-			gradient: {
-				opacityFrom: 1,
-				opacityTo: 1,
-				colorStops: [{
-					offset: 0,
-					color: app.color.red,
-					opacity: 1
-				},
-				{
-					offset: 50,
-					color: app.color.orange,
-					opacity: 1
-				},
-				{
-					offset: 100,
-					color: app.color.lime,
-					opacity: 1
-				}]
-			},
-		},
-		series: [{
-			data: [2.68, 2.93, 2.04, 1.61, 1.88, 1.62, 2.80]
-		}],
-		labels: ['Jun 23', 'Jun 24', 'Jun 25', 'Jun 26', 'Jun 27', 'Jun 28', 'Jun 29'],
-		xaxis: {
-			crosshairs: {
-				width: 1
-			},
-		},
-		tooltip: {
-			theme: 'dark',
-			fixed: {
-				enabled: false
-			},
-			x: {
-				show: false
-			},
-			y: {
-				title: {
-					formatter: function (seriesName) {
-						return ''
-					}
-				},
-				formatter: (value) => { return value + '%' },
-			},
-			marker: {
-				show: false
-			}
-		},
-		responsive: [{
-			breakpoint: 3000,
-			options: {
-				chart: {
-					width: 120
-				}
-			}
-		},{
-			breakpoint: 1300,
-			options: {
-				chart: {
-					width: 100
-				}
-			}
-		},{
-			breakpoint: 1200,
-			options: {
-				chart: {
-					width: 160
-				}
-			}
-		},{
-			breakpoint: 900,
-			options: {
-				chart: {
-					width: 120
-				}
-			}
-		},{
-			breakpoint: 576,
-			options: {
-				chart: {
-					width: 180
-				}
-			}
-		},{
-			breakpoint: 400,
-			options: {
-				chart: {
-					width: 120
-				}
-			}
-		}]
-	}
-	if ($('#conversion-rate-sparkline').length !== 0) {
-		new ApexCharts(document.querySelector("#conversion-rate-sparkline"), options).render();
-	}
+var handleInteractiveChart = function () {
+  "use strict";
+  $("#interactive-chart").empty();
+
+  function showTooltip(x, y, contents) {
+    $('<div id="tooltip" class="flot-tooltip">' + contents + "</div>")
+      .css({
+        top: y - 45,
+        left: x - 55,
+      })
+      .appendTo("body")
+      .fadeIn(200);
+  }
+  if ($("#interactive-chart").length !== 0) {
+    var data1 = [
+      [1, 40],
+      [2, 50],
+      [3, 60],
+      [4, 60],
+      [5, 60],
+      [6, 65],
+      [7, 75],
+      [8, 90],
+      [9, 100],
+      [10, 105],
+      [11, 110],
+      [12, 110],
+      [13, 120],
+      [14, 130],
+      [15, 135],
+      [16, 145],
+      [17, 132],
+      [18, 123],
+      [19, 135],
+      [20, 150],
+    ];
+    var data2 = [
+      [1, 10],
+      [2, 6],
+      [3, 10],
+      [4, 12],
+      [5, 18],
+      [6, 20],
+      [7, 25],
+      [8, 23],
+      [9, 24],
+      [10, 25],
+      [11, 18],
+      [12, 30],
+      [13, 25],
+      [14, 25],
+      [15, 30],
+      [16, 27],
+      [17, 20],
+      [18, 18],
+      [19, 31],
+      [20, 23],
+    ];
+    var xLabel = [
+      [1, ""],
+      [2, ""],
+      [3, "May "],
+      [4, ""],
+      [5, ""],
+      [6, "May 19"],
+      [7, ""],
+      [8, ""],
+      [9, "May 22"],
+      [10, ""],
+      [11, ""],
+      [12, "May 25"],
+      [13, ""],
+      [14, ""],
+      [15, "May 28"],
+      [16, ""],
+      [17, ""],
+      [18, "May 31"],
+      [19, ""],
+      [20, ""],
+    ];
+
+    $.plot(
+      $("#interactive-chart"),
+      [
+        {
+          data: data1,
+          label: "Page Views",
+          color: app.color.blue,
+          lines: { show: true, fill: false, lineWidth: 2 },
+          points: { show: true, radius: 3, fillColor: app.color.componentBg },
+          shadowSize: 0,
+        },
+        {
+          data: data2,
+          label: "Visitors",
+          color: app.color.green,
+          lines: { show: true, fill: false, lineWidth: 2 },
+          points: { show: true, radius: 3, fillColor: app.color.componentBg },
+          shadowSize: 0,
+        },
+      ],
+      {
+        xaxis: {
+          ticks: xLabel,
+          tickDecimals: 0,
+          tickColor: "rgba(" + app.color.darkRgb + ", .2)",
+        },
+        yaxis: {
+          ticks: 10,
+          tickColor: "rgba(" + app.color.darkRgb + ", .2)",
+          min: 0,
+          max: 200,
+        },
+        grid: {
+          hoverable: true,
+          clickable: true,
+          tickColor: "rgba(" + app.color.darkRgb + ", .2)",
+          borderWidth: 1,
+          backgroundColor: "transparent",
+          borderColor: "rgba(" + app.color.darkRgb + ", .2)",
+        },
+        legend: {
+          labelBoxBorderColor: "rgba(" + app.color.darkRgb + ", .2)",
+          margin: 10,
+          noColumns: 1,
+          show: true,
+        },
+      }
+    );
+    var previousPoint = null;
+    $("#interactive-chart").bind("plothover", function (event, pos, item) {
+      $("#x").text(pos.x.toFixed(2));
+      $("#y").text(pos.y.toFixed(2));
+      if (item) {
+        if (previousPoint !== item.dataIndex) {
+          previousPoint = item.dataIndex;
+          $("#tooltip").remove();
+          var y = item.datapoint[1].toFixed(2);
+
+          var content = item.series.label + " " + y;
+          showTooltip(item.pageX, item.pageY, content);
+        }
+      } else {
+        $("#tooltip").remove();
+        previousPoint = null;
+      }
+      event.preventDefault();
+    });
+  }
 };
 
-var handleStoreSessionSparkline = function() {
-	var options = {
-		chart: {
-			type: 'line',
-			width: 160,
-			height: 28,
-			sparkline: {
-				enabled: true
-			},
-			stacked: false
-		},
-		stroke: {
-			curve: 'smooth',
-			width: 3
-		},
-		fill: {
-			type: 'gradient',
-			gradient: {
-				opacityFrom: 1,
-				opacityTo: 1,
-				colorStops: [{
-					offset: 0,
-					color: app.color.teal,
-					opacity: 1
-				},
-				{
-					offset: 50,
-					color: app.color.blue,
-					opacity: 1
-				},
-				{
-					offset: 100,
-					color: app.color.cyan,
-					opacity: 1
-				}]
-			},
-		},
-		series: [{
-			data: [10812, 11393, 7311, 6834, 9612, 11200, 13557]
-		}],
-		labels: ['Jun 23', 'Jun 24', 'Jun 25', 'Jun 26', 'Jun 27', 'Jun 28', 'Jun 29'],
-		xaxis: {
-			crosshairs: {
-				width: 1
-			},
-		},
-		tooltip: {
-			theme: 'dark',
-			fixed: {
-				enabled: false
-			},
-			x: {
-				show: false
-			},
-			y: {
-				title: {
-					formatter: function (seriesName) {
-						return ''
-					}
-				},
-				formatter: (value) => { return convertNumberWithCommas(value) },
-			},
-			marker: {
-				show: false
-			}
-		},
-		responsive: [{
-			breakpoint: 3000,
-			options: {
-				chart: {
-					width: 120
-				}
-			}
-		},{
-			breakpoint: 1300,
-			options: {
-				chart: {
-					width: 100
-				}
-			}
-		},{
-			breakpoint: 1200,
-			options: {
-				chart: {
-					width: 160
-				}
-			}
-		},{
-			breakpoint: 900,
-			options: {
-				chart: {
-					width: 120
-				}
-			}
-		},{
-			breakpoint: 576,
-			options: {
-				chart: {
-					width: 180
-				}
-			}
-		},{
-			breakpoint: 400,
-			options: {
-				chart: {
-					width: 120
-				}
-			}
-		}]
-	};
-	if ($('#store-session-sparkline').length !== 0) {
-		new ApexCharts(document.querySelector('#store-session-sparkline'), options).render();
-	}
+var handleDonutChart = function () {
+  "use strict";
+  $("#donut-chart").empty();
+  if ($("#donut-chart").length !== 0) {
+    var donutData = [
+      {
+        label: "Chrome",
+        data: 35,
+        color: "rgba(" + app.color.purpleRgb + ", .75)",
+      },
+      {
+        label: "Firefox",
+        data: 30,
+        color: "rgba(" + app.color.purpleRgb + ", 1)",
+      },
+      {
+        label: "Safari",
+        data: 15,
+        color: "rgba(" + app.color.purpleRgb + ", .5)",
+      },
+      { label: "Opera", data: 10, color: app.color.blue },
+      { label: "IE", data: 5, color: "rgba(" + app.color.blueRgb + ", .75)" },
+    ];
+    $.plot("#donut-chart", donutData, {
+      series: {
+        pie: {
+          innerRadius: 0.5,
+          show: true,
+          label: {
+            show: true,
+          },
+          stroke: {
+            color: app.color.componentBg,
+          },
+        },
+      },
+      legend: {
+        show: true,
+      },
+    });
+  }
 };
 
-var handleVisitorsAreaChart = function() {
-	var handleGetDate = function(minusDate) {
-		var d = new Date();
-				d = d.setDate(d.getDate() - minusDate);
-		return d;
-	};
-	var visitorAreaChartData = [{
-		'key' : 'Unique Visitors',
-		'color' : app.color.cyan,
-		'values' : [ 
-			[handleGetDate(77), 13], [handleGetDate(76), 13], [handleGetDate(75), 6 ], 
-			[handleGetDate(73), 6 ], [handleGetDate(72), 6 ], [handleGetDate(71), 5 ], [handleGetDate(70), 5 ], 
-			[handleGetDate(69), 5 ], [handleGetDate(68), 6 ], [handleGetDate(67), 7 ], [handleGetDate(66), 6 ], 
-			[handleGetDate(65), 9 ], [handleGetDate(64), 9 ], [handleGetDate(63), 8 ], [handleGetDate(62), 10], 
-			[handleGetDate(61), 10], [handleGetDate(60), 10], [handleGetDate(59), 10], [handleGetDate(58), 9 ], 
-			[handleGetDate(57), 9 ], [handleGetDate(56), 10], [handleGetDate(55), 9 ], [handleGetDate(54), 9 ], 
-			[handleGetDate(53), 8 ], [handleGetDate(52), 8 ], [handleGetDate(51), 8 ], [handleGetDate(50), 8 ], 
-			[handleGetDate(49), 8 ], [handleGetDate(48), 7 ], [handleGetDate(47), 7 ], [handleGetDate(46), 6 ], 
-			[handleGetDate(45), 6 ], [handleGetDate(44), 6 ], [handleGetDate(43), 6 ], [handleGetDate(42), 5 ], 
-			[handleGetDate(41), 5 ], [handleGetDate(40), 4 ], [handleGetDate(39), 4 ], [handleGetDate(38), 5 ], 
-			[handleGetDate(37), 5 ], [handleGetDate(36), 5 ], [handleGetDate(35), 7 ], [handleGetDate(34), 7 ], 
-			[handleGetDate(33), 7 ], [handleGetDate(32), 10], [handleGetDate(31), 9 ], [handleGetDate(30), 9 ], 
-			[handleGetDate(29), 10], [handleGetDate(28), 11], [handleGetDate(27), 11], [handleGetDate(26), 8 ], 
-			[handleGetDate(25), 8 ], [handleGetDate(24), 7 ], [handleGetDate(23), 8 ], [handleGetDate(22), 9 ], 
-			[handleGetDate(21), 8 ], [handleGetDate(20), 9 ], [handleGetDate(19), 10], [handleGetDate(18), 9 ], 
-			[handleGetDate(17), 10], [handleGetDate(16), 16], [handleGetDate(15), 17], [handleGetDate(14), 16], 
-			[handleGetDate(13), 17], [handleGetDate(12), 16], [handleGetDate(11), 15], [handleGetDate(10), 14], 
-			[handleGetDate(9) , 24], [handleGetDate(8) , 18], [handleGetDate(7) , 15], [handleGetDate(6) , 14], 
-			[handleGetDate(5) , 16], [handleGetDate(4) , 16], [handleGetDate(3) , 17], [handleGetDate(2) , 7 ], 
-			[handleGetDate(1) , 7 ], [handleGetDate(0) , 7 ]
-		]
-	}, {
-		'key' : 'Page Views',
-		'color' : app.color.blue,
-		'values' : [ 
-			[handleGetDate(77), 14], [handleGetDate(76), 13], [handleGetDate(75), 15], 
-			[handleGetDate(73), 14], [handleGetDate(72), 13], [handleGetDate(71), 15], [handleGetDate(70), 16], 
-			[handleGetDate(69), 16], [handleGetDate(68), 14], [handleGetDate(67), 14], [handleGetDate(66), 13], 
-			[handleGetDate(65), 12], [handleGetDate(64), 13], [handleGetDate(63), 13], [handleGetDate(62), 15], 
-			[handleGetDate(61), 16], [handleGetDate(60), 16], [handleGetDate(59), 17], [handleGetDate(58), 17], 
-			[handleGetDate(57), 18], [handleGetDate(56), 15], [handleGetDate(55), 15], [handleGetDate(54), 15], 
-			[handleGetDate(53), 19], [handleGetDate(52), 19], [handleGetDate(51), 18], [handleGetDate(50), 18], 
-			[handleGetDate(49), 17], [handleGetDate(48), 16], [handleGetDate(47), 18], [handleGetDate(46), 18], 
-			[handleGetDate(45), 18], [handleGetDate(44), 16], [handleGetDate(43), 14], [handleGetDate(42), 14], 
-			[handleGetDate(41), 13], [handleGetDate(40), 14], [handleGetDate(39), 13], [handleGetDate(38), 10], 
-			[handleGetDate(37), 9 ], [handleGetDate(36), 10], [handleGetDate(35), 11], [handleGetDate(34), 11], 
-			[handleGetDate(33), 11], [handleGetDate(32), 10], [handleGetDate(31), 9 ], [handleGetDate(30), 10], 
-			[handleGetDate(29), 13], [handleGetDate(28), 14], [handleGetDate(27), 14], [handleGetDate(26), 13], 
-			[handleGetDate(25), 12], [handleGetDate(24), 11], [handleGetDate(23), 13], [handleGetDate(22), 13], 
-			[handleGetDate(21), 13], [handleGetDate(20), 13], [handleGetDate(19), 14], [handleGetDate(18), 13], 
-			[handleGetDate(17), 13], [handleGetDate(16), 19], [handleGetDate(15), 21], [handleGetDate(14), 22],
-			[handleGetDate(13), 25], [handleGetDate(12), 24], [handleGetDate(11), 24], [handleGetDate(10), 22], 
-			[handleGetDate(9) , 16], [handleGetDate(8) , 15], [handleGetDate(7) , 12], [handleGetDate(6) , 12], 
-			[handleGetDate(5) , 15], [handleGetDate(4) , 15], [handleGetDate(3) , 15], [handleGetDate(2) , 18], 
-			[handleGetDate(2) , 18], [handleGetDate(0) , 17]
-		]
-	}];
-	
-	if ($('#visitors-line-chart').length !== 0) {
-		nv.addGraph(function() {
-			var stackedAreaChart = nv.models.stackedAreaChart()
-				.useInteractiveGuideline(true)
-				.x(function(d) { return d[0] })
-				.y(function(d) { return d[1] })
-				.pointSize(0.5)
-				.margin({'left':35,'right': 25,'top': 20,'bottom':20})
-				.controlLabels({stacked: 'Stacked'})
-				.showControls(false)
-				.duration(300);
+var handleDashboardSparkline = function () {
+  "use strict";
+  var options = {
+    height: "50px",
+    width: "100%",
+    fillColor: "transparent",
+    lineWidth: 2,
+    spotRadius: "4",
+    highlightLineColor: app.color.blue,
+    highlightSpotColor: app.color.blue,
+    spotColor: false,
+    minSpotColor: false,
+    maxSpotColor: false,
+  };
+  function renderDashboardSparkline() {
+    $("#sparkline-unique-visitor").empty();
+    $("#sparkline-bounce-rate").empty();
+    $("#sparkline-total-page-views").empty();
+    $("#sparkline-avg-time-on-site").empty();
+    $("#sparkline-new-visits").empty();
+    $("#sparkline-return-visitors").empty();
 
-			stackedAreaChart.xAxis.tickFormat(function(d) { 
-				var monthsName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-				d = new Date(d);
-				d = monthsName[d.getMonth()] + ' ' + d.getDate();
-				return d ;
-			});
-			stackedAreaChart.yAxis.tickFormat(d3.format(',.0f'));
+    var value = [50, 30, 45, 40, 50, 20, 35, 40, 50, 70, 90, 40];
+    options.type = "line";
+    options.height = "23px";
+    options.lineColor = app.color.red;
+    options.highlightLineColor = app.color.red;
+    options.highlightSpotColor = app.color.red;
 
-			d3.select('#visitors-line-chart')
-				.append('svg')
-				.datum(visitorAreaChartData)
-				.transition().duration(1000)
-				.call(stackedAreaChart)
-				.each('start', function() {
-					setTimeout(function() {
-						d3.selectAll('#visitors-line-chart *').each(function() {
-							if(this.__transition__)
-								this.__transition__.duration = 1;
-						})
-					}, 0)
-				});
+    var countWidth = $("#sparkline-unique-visitor").width();
+    if (countWidth >= 200) {
+      options.width = "200px";
+    } else {
+      options.width = "100%";
+    }
 
-			nv.utils.windowResize(stackedAreaChart.update);
-			return stackedAreaChart;
-		});
-	}
+    $("#sparkline-unique-visitor").sparkline(value, options);
+    options.lineColor = app.color.orange;
+    options.highlightLineColor = app.color.orange;
+    options.highlightSpotColor = app.color.orange;
+    $("#sparkline-bounce-rate").sparkline(value, options);
+    options.lineColor = app.color.green;
+    options.highlightLineColor = app.color.green;
+    options.highlightSpotColor = app.color.green;
+    $("#sparkline-total-page-views").sparkline(value, options);
+    options.lineColor = app.color.blue;
+    options.highlightLineColor = app.color.blue;
+    options.highlightSpotColor = app.color.blue;
+    $("#sparkline-avg-time-on-site").sparkline(value, options);
+    options.lineColor = app.color.gray;
+    options.highlightLineColor = app.color.gray;
+    options.highlightSpotColor = app.color.gray;
+    $("#sparkline-new-visits").sparkline(value, options);
+    options.lineColor = app.color.black;
+    options.highlightLineColor = app.color.black;
+    options.highlightSpotColor = app.color.black;
+    $("#sparkline-return-visitors").sparkline(value, options);
+  }
+
+  renderDashboardSparkline();
+
+  $(window).on("resize", function () {
+    renderDashboardSparkline();
+  });
 };
 
-var handleVisitorsMap = function() {
-	var fillColor = ($('#visitors-map').attr('data-theme')) ? 'rgba('+ app.color.componentColorRgb +', .25)' : app.color.gray700;
-	var options = {
-		map: 'world_mill',
-		scaleColors: [app.color.black, app.color.black],
-		container: $('#visitors-map'),
-		normalizeFunction: 'linear',
-		hoverOpacity: 0.5,
-		hoverColor: false,
-		zoomOnScroll: false,
-		zoomButtons: false,
-		markerStyle: {
-			initial: {
-				fill: app.color.black,
-				stroke: 'transparent',
-				r: 3
-			}
-		},
-		regions: [{
-			attribute: 'fill'
-		}],
-		regionStyle: {
-			initial: {
-				fill: fillColor,
-				"fill-opacity": 1,
-				stroke: 'none',
-				"stroke-width": 0.4,
-				"stroke-opacity": 1
-			},
-			hover: {
-				"fill-opacity": 0.8
-			},
-			selected: {
-				fill: 'yellow'
-			}
-		},
-		series: {
-			regions: [{
-				values: {
-					IN: app.color.teal,
-					US: app.color.teal,
-					MN: app.color.teal,
-					RU: app.color.teal
-				}
-			}]
-		},
-		focusOn: {
-			x: 0.7,
-			y: 0.5,
-			scale: 1
-		},
-		backgroundColor: 'transparent'
-	};
-	if ($('#visitors-map').length !== 0) {
-		$('#visitors-map').vectorMap(options);
-	}
-}
-
-var handleDateRangeFilter = function() {
-	$('#daterange-filter span').html(moment().subtract(7, 'days').format('D MMMM YYYY') + ' - ' + moment().format('D MMMM YYYY'));
-	$('#daterange-prev-date').html(moment().subtract(15, 'days').format('D MMMM') + ' - ' + moment().subtract(8, 'days').format('D MMMM YYYY'));
-
-	$('#daterange-filter').daterangepicker({
-		format: 'MM/DD/YYYY',
-		startDate: moment().subtract(7, 'days'),
-		endDate: moment(),
-		minDate: '01/06/2021',
-		maxDate: '07/06/2021',
-		dateLimit: { days: 60 },
-		showDropdowns: true,
-		showWeekNumbers: true,
-		timePicker: false,
-		timePickerIncrement: 1,
-		timePicker12Hour: true,
-		ranges: {
-			'Today': [moment(), moment()],
-			'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-			'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-			'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-			'This Month': [moment().startOf('month'), moment().endOf('month')],
-			'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-		},
-		opens: 'right',
-		drops: 'down',
-		buttonClasses: ['btn', 'btn-sm'],
-		applyClass: 'btn-primary',
-		cancelClass: 'btn-default',
-		separator: ' to ',
-		locale: {
-			applyLabel: 'Submit',
-			cancelLabel: 'Cancel',
-			fromLabel: 'From',
-			toLabel: 'To',
-			customRangeLabel: 'Custom',
-			daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
-			monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-			firstDay: 1
-		}
-	}, function(start, end, label) {
-		$('#daterange-filter span').html(start.format('D MMMM YYYY') + ' - ' + end.format('D MMMM YYYY'));
-		
-		var gap = end.diff(start, 'days');
-		$('#daterange-prev-date').html(moment(start).subtract(gap, 'days').format('D MMMM') + ' - ' + moment(start).subtract(1, 'days').format('D MMMM YYYY'));
-	});
+var handleDashboardDatepicker = function () {
+  "use strict";
+  $("#datepicker-inline").datepicker({
+    todayHighlight: true,
+  });
 };
 
-var DashboardV3 = function () {
-	"use strict";
-	return {
-		//main function
-		init: function () {
-			handleTotalSalesSparkline();
-			handleConversionRateSparkline();
-			handleStoreSessionSparkline();
-			handleVisitorsAreaChart();
-			handleVisitorsMap();
-			handleDateRangeFilter();
-		}
-	};
-}();
+var handleDashboardTodolist = function () {
+  "use strict";
+  $("[data-change=todolist]").click(function () {
+    if ($(this).is(":checked")) {
+      $(this).closest(".todolist-item").addClass("active");
+    } else {
+      $(this).closest(".todolist-item").removeClass("active");
+    }
+  });
+};
 
-$(document).ready(function() {
-	DashboardV3.init();
+var Dashboard = (function () {
+  "use strict";
+  return {
+    //main function
+    init: function () {
+      handleDashboardGritterNotification();
+      handleDashboardSparkline();
+      handleInteractiveChart();
+      handleDonutChart();
+      handleDashboardTodolist();
+      handleVectorMap();
+      handleDashboardDatepicker();
+
+      $(document).on("theme-change", function () {
+        handleInteractiveChart();
+        handleDonutChart();
+      });
+    },
+  };
+})();
+
+$(document).ready(function () {
+  Dashboard.init();
+});
+
+// stationCanvasの表示・処理を記載
+$(document).ready(function () {
+  $("span").click(function () {
+    let stationName = $(this).text();
+    $("#station").val(stationName);
+    $("#subway").addClass("hide");
+    $("#canvasContainer").removeClass("hide");
+
+    const canvas = document.getElementById("stationViewCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const img = new Image();
+    img.src = "../../images/station/" + stationName + ".png";
+    img.onload = function () {
+      const aspectRatio = img.width / img.height;
+      const maxWidth = $(canvas).parent().width();
+      const maxHeight = $(canvas).parent().height();
+      let width, height;
+
+      if (maxWidth / maxHeight > aspectRatio) {
+        // 縦に余白ができる場合
+        width = maxHeight * aspectRatio;
+        height = maxHeight;
+      } else {
+        // 横に余白ができる場合
+        width = maxWidth;
+        height = maxWidth / aspectRatio;
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+      ctx.drawImage(img, 0, 0, width, height); // サイズを指定して描画する
+    };
+
+    img.onerror = function () {
+      console.error("Failed to load image:", img.src);
+    };
+  });
+
+  $("#stationViewCanvas").click(function (event) {
+    var x = event.offsetX;
+    var y = event.offsetY;
+
+    const canvas = document.getElementById("stationViewCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // 新しいピンを描画する
+    const pin = document.querySelector(".pin");
+    const canvasOffsetLeft = canvas.offsetLeft;
+    const canvasOffsetTop = canvas.offsetTop;
+    pin.style.left = x + canvasOffsetLeft - 5 + "px";
+    pin.style.top = y + canvasOffsetTop - 5 + "px";
+    pin.classList.remove("hide");
+
+    // 新しいマーカーの座標を保存する
+    markerX = x;
+    markerY = y;
+
+    // X座標を設定する
+    $("#Xnum").val(markerX);
+
+    // Y座標を設定する
+    $("#Ynum").val(markerY);
+
+    // 背景画像を再描画する
+    const img = new Image();
+    img.src = "../../images/station/" + $("#station").val() + ".png";
+    img.onload = function () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    };
+  });
+
+  $(document).on("click", ".returnSubway", function () {
+    $("#canvasContainer").addClass("hide");
+    $("#subway").removeClass("hide");
+    $("#station").val("");
+    $(".pin").addClass("hide");
+
+  });
 });
