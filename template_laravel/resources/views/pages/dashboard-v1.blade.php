@@ -212,4 +212,9 @@
 	</form>
 	<script src="/assets/plugins/dropzone/dist/min/dropzone.min.js"></script>
 	<script src="/assets/js/demo/dashboard.js"></script>
+		<script >
+		$(document).ready(function(){
+		alert("jQuery is working");
+		});
+	</script>
 @endsection
