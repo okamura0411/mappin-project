@@ -409,8 +409,7 @@ function placePins(filteredData) {
 }
 
 $(document).ready(function () {
-  $("span").click(async function () {
-	alert($(this).text());
+//   $("span").click(async function () {
     // let stationName = $(this).text();
     // $("#station").val(stationName);
     // $("#subway").addClass("hide");
@@ -448,7 +447,10 @@ $(document).ready(function () {
     //   canvas.style.height = height + "px";
     //   ctx.drawImage(img, 0, 0, width, height);
     // };
-  });
+//   });
+	$(span).on("click",function(){
+		alert("aaa");
+	})
 
     $(document).on("click", ".returnSubway", function () {
       $("#canvasContainer").addClass("hide");
