@@ -77,7 +77,6 @@
 										<li data-coords="7,10"data-dir="W" data-labelPos="W">Gotanda</li>
 										<li data-coords="7,9"></li>
 										<li data-coords="7,8"></li>
-										<li data-coords="7,7"data-labelPos="W">Shibuya</li>
 										<li data-coords="7,6"data-labelPos="W">Harajuku</li>
 										<li data-coords="7,5"></li>
 										<li data-coords="7,4"data-labelPos="W">Shinjuku</li>
@@ -95,18 +94,20 @@
 						</div>
 						{{-- 新しく表示させるcanvas --}}
 						<div id="canvasContainer" class="panel panel-inverse stationCanvas hide" data-sortable-id="index-1">
+							<div id="viewContainer">
 								<canvas id="stationViewCanvas"></canvas>
+							</div>
 								<!-- ここにピンを追加する -->
-						<div class="returnSubway">路線図に戻る。</div>
-		
-
+							<div class="returnSubway">路線図に戻る。</div>
 						</div>
 
 							<style>
+								#viewContainer{
+									margin-top: 20px;
+								}
 								#stationViewCanvas {
 									height: 390px;
 									width: 600px;
-									margin-top: 20px;
 								}
 								#canvasContainer{
 									display: flex;
@@ -136,7 +137,6 @@
 													<option value="Hamamatucho">Hamamatucho</option>
 													<option value="Shinagawa">Shinagawa</option>			
 													<option value="Gotanda">Gotanda</option>			
-													<option value="Shibuya">Shibuya</option>
 													<option value="Harajuku">Harajuku</option>			
 													<option value="Shinjuku">Shinjuku</option>			
 													<option value="Ikebukuro">Ikebukuro</option>			

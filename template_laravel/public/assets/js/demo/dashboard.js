@@ -358,10 +358,8 @@ $(document).ready(function () {
 
     // X座標を設定する
     $("#Xnum").val(markerX);
-
     // Y座標を設定する
     $("#Ynum").val(markerY);
-
     // 背景画像を再描画する
     const img = new Image();
     img.src = "../../images/station/" + $("#station").val() + ".png";
