@@ -309,7 +309,6 @@ $(document).ready(function () {
 
     const img = new Image();
     img.src = "../../images/station/" + stationName + ".png";
-    console.log(img.src);
     img.onload = function () {
       const aspectRatio = img.width / img.height;
       const maxWidth = $(canvas).parent().width();
@@ -380,11 +379,14 @@ $(document).ready(function () {
   });
 });
 
+
+
 Dropzone.options.uploadForm = {
-  autoProcessQueue: false, // ファイルのアップロードを自動的に処理しないようにする
-  uploadMultiple: true, // 複数のファイルをアップロードできるようにする
-  parallelUploads: 100, // 一度にアップロードできるファイルの最大数を設定する
-  maxFiles: 10, // アップロードできるファイルの最大数を設定する
+  autoProcessQueue: false,
+  uploadMultiple: true,
+  parallelUploads: 100,
+  maxFiles: 10,
+  
 
   init: function () {
     let myDropzone = this,
@@ -396,6 +398,13 @@ Dropzone.options.uploadForm = {
       myDropzone.processQueue();
     });
 
+	  function clearInputs() {
+      const form = document.querySelector("#upload-form");
+      const inputs = form.querySelectorAll("input, textarea");
+      inputs.forEach((input) => {
+        input.value = "";
+      });
+    }
     myDropzone.on("sendingmultiple", function (data, xhr, formData) {
       formData.append("station", document.getElementById("station").value);
       formData.append("place", document.getElementsByName("place")[0].value);
@@ -407,16 +416,22 @@ Dropzone.options.uploadForm = {
       formData.append("action", document.getElementsByName("action")[0].value);
       formData.append("remarks",document.getElementsByName("remarks")[0].value);
     });
-		myDropzone.on("sending", function (file, xhr, formData) {
-		formData.append("filename", file.name);
-	});
+
+    myDropzone.on("sending", function (file, xhr, formData) {
+      formData.append("filename", file.name);
+    });
 
     myDropzone.on("successmultiple", function (files, response) {
       // フォームの送信後の処理
-      window.location.replace("/home");
     });
+
     myDropzone.on("errormultiple", function (files, response) {
-    //   alert(response);
+      // フォームの送信後の処理
+	  setTimeout(function () {
+		alert("正常に登録完了しました！");
+		clearInputs();
+        myDropzone.removeAllFiles(); // dropzoneに表示されているファイルを全て削除
+      }, 2000); // 1秒後に実行するように指定
     });
   },
 };

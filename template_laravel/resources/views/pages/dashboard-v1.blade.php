@@ -191,7 +191,7 @@
 									<tr>
 										<td nowrap><label class="badge bg-default text-gray-900">備考欄・進捗</label></td>
 										<td>
-											<textArea name="remarks" rows="3" cols="30" placeholder='天井から2秒毎滴下・お客様への影響がないため通常対応とする'></textArea>
+											<textArea name="remarks" rows="3" cols="30" placeholder='天井から2秒毎滴下・お客様への影響がないため通常対応とする' style="white-space: nowrap;"></textArea>
 										</td>
 									</tr>
 									<tr>

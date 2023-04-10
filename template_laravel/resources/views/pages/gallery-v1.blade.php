@@ -44,6 +44,7 @@
         }
         $params = array();
         $elements = explode(",", $line); // カンマで区切って各パラメータを取得
+		$count = 0;
         foreach ($elements as $element) {
             $param = explode(":", $element);
 
@@ -54,7 +55,7 @@
 
             $key = $param[0];
             $value = $param[1];
-
+			$count++;
             // $params配列のキーが既に存在する場合は、そのキーに配列に要素を追加する
             if (array_key_exists($key, $params)) {
                 if (!is_array($params[$key])) {
