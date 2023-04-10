@@ -209,7 +209,6 @@
 		<div id="preview">
 		ここに画像が表示される。
 		</div>
-		{{-- ここの修正から移行 --}}
-	<script src="/assets/js/demo/dashboard-v3.js"></script>
+		<script src="/assets/js/demo/dashboard-v3.js"></script>
 
 @endsection

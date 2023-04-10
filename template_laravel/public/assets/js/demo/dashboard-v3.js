@@ -450,11 +450,11 @@ $(document).ready(function () {
     // };
 //   });
 
-    $(document).on("click", ".returnSubway", function () {
-      $("#canvasContainer").addClass("hide");
-      $("#subway").removeClass("hide");
-      $("#station").val("");
-      $(".pin").addClass("hide");
-    });
+    // $(document).on("click", ".returnSubway", function () {
+    //   $("#canvasContainer").addClass("hide");
+    //   $("#subway").removeClass("hide");
+    //   $("#station").val("");
+    //   $(".pin").addClass("hide");
+    // });
 
-});
+}); 
