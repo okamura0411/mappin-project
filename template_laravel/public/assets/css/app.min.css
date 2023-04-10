@@ -34585,9 +34585,7 @@ a.editable-click:hover {
   display: none !important;
 }
 
-#viewContainer {
-  position: relative;
-}
+
 
 .pin {
   width: 30px;

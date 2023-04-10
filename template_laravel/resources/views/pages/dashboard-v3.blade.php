@@ -104,6 +104,7 @@
 							<style>
 								#viewContainer{
 									margin-top: 20px;
+									position: relative;
 								}
 								#stationViewCanvas {
 									height: 390px;
