@@ -20154,7 +20154,6 @@ code {
   height: 0;
   display: block;
   margin: 0 auto 0.9375rem;
-  vertical-align: middle;
   border-radius: 12px;
 }
 @media (max-width: 767.98px) {
