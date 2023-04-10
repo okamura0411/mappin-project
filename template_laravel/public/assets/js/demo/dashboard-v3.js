@@ -383,30 +383,30 @@ $(document).ready(function () {
   Dashboard.init();
 });
 
-// Maincontrollerから情報を取ってくる。→web.phpへ飛ぶ
-async function fetchSampleData() {
-  const response = await fetch("/sample-data");
-  const data = await response.json();
-  return data;
-}
+// // Maincontrollerから情報を取ってくる。→web.phpへ飛ぶ
+// async function fetchSampleData() {
+//   const response = await fetch("/sample-data");
+//   const data = await response.json();
+//   return data;
+// }
 
-// 取得した情報からピンを表示する関数
-function placePins(filteredData) {
-  	// const stationViewCanvas = document.getElementById("stationViewCanvas");
-    const canvasContainer = document.getElementById("canvasContainer");
-    // 既存のピンを削除
-    // stationViewCanvas.querySelectorAll(".pin").forEach((pin) => pin.remove());
-	//   新しいピンを配置
-  	filteredData.forEach((item) => {
-    const pin = document.createElement("div");
-    const x = item.xnum;
-    const y = item.ynum;
-    pin.style.left = `${x}px`; // canvas要素の左端からの距離
-    pin.style.top = `${y}px`; // canvas要素の上端からの距離
-    pin.classList.add("pin");
-    canvasContainer.appendChild(pin);
-  });
-}
+// // 取得した情報からピンを表示する関数
+// function placePins(filteredData) {
+//   	// const stationViewCanvas = document.getElementById("stationViewCanvas");
+//     const canvasContainer = document.getElementById("canvasContainer");
+//     // 既存のピンを削除
+//     // stationViewCanvas.querySelectorAll(".pin").forEach((pin) => pin.remove());
+// 	//   新しいピンを配置
+//   	filteredData.forEach((item) => {
+//     const pin = document.createElement("div");
+//     const x = item.xnum;
+//     const y = item.ynum;
+//     pin.style.left = `${x}px`; // canvas要素の左端からの距離
+//     pin.style.top = `${y}px`; // canvas要素の上端からの距離
+//     pin.classList.add("pin");
+//     canvasContainer.appendChild(pin);
+//   });
+// }
 
 $(document).ready(function () {
 //   $("span").click(async function () {
