@@ -94,8 +94,15 @@
 								</script>
 						</div>
 						{{-- 新しく表示させるcanvas --}}
-							<div id="canvasContainer" class="panel panel-inverse stationCanvas hide" data-sortable-id="index-1">
-								<style>
+						<div id="canvasContainer" class="panel panel-inverse stationCanvas hide" data-sortable-id="index-1">
+								<canvas id="stationViewCanvas"></canvas>
+								<!-- ここにピンを追加する -->
+						<div class="returnSubway">路線図に戻る。</div>
+		
+
+						</div>
+
+							<style>
 								#stationViewCanvas {
 									height: 390px;
 									width: 600px;
@@ -106,11 +113,7 @@
 									justify-content: center;
 									align-items: center;
 								}
-								</style>
-								<canvas id="stationViewCanvas"></canvas>
-								<div class='pin'></div>
-								<div class="returnSubway" style="display:flex-end">路線図に戻る。</div>
-							</div>
+							</style>
 					</div>
 				</div>
 			</div>

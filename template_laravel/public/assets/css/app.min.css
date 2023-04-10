@@ -34634,6 +34634,7 @@ a.editable-click:hover {
   -o-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+  pointer-events: none;
 }
 
 @-moz-keyframes pulsate {

@@ -383,17 +383,50 @@ $(document).ready(function () {
   Dashboard.init();
 });
 
-// stationCanvasの表示・処理を記載
+// Maincontrollerから情報を取ってくる。→web.phpへ飛ぶ
+async function fetchSampleData() {
+  const response = await fetch("/sample-data");
+  const data = await response.json();
+  return data;
+}
+
+// 取得した情報からピンを表示する関数
+function placePins(filteredData) {
+  	// const stationViewCanvas = document.getElementById("stationViewCanvas");
+    const canvasContainer = document.getElementById("canvasContainer");
+    // 既存のピンを削除
+    // stationViewCanvas.querySelectorAll(".pin").forEach((pin) => pin.remove());
+	//   新しいピンを配置
+  	filteredData.forEach((item) => {
+    const pin = document.createElement("div");
+    const x = item.xnum;
+    const y = item.ynum;
+    pin.style.left = `${x}px`; // canvas要素の左端からの距離
+    pin.style.top = `${y}px`; // canvas要素の上端からの距離
+    pin.classList.add("pin");
+    canvasContainer.appendChild(pin);
+  });
+}
+
 $(document).ready(function () {
-  $("span").click(function () {
+  $("span").click(async function () {
     let stationName = $(this).text();
     $("#station").val(stationName);
     $("#subway").addClass("hide");
     $("#canvasContainer").removeClass("hide");
 
+    const data = await fetchSampleData(); // 関数を呼び出し、データを取得
+    console.log(data);
+    // ここで選択された駅名のデータだけをフィルタリングする
+    const filteredData = data.filter((item) => {
+      const stationValue = item.station.split(":")[1]; // 'station:' 以降の文字列を取得
+      return stationValue === stationName;
+    });
+    console.log(filteredData); // フィルタリングされたデータを表示
+    placePins(filteredData); // 取得したデータを使ってピンを配置
+
     const canvas = document.getElementById("stationViewCanvas");
     const ctx = canvas.getContext("2d");
-
     const img = new Image();
     img.src = "../../images/station/" + stationName + ".png";
     img.onload = function () {
@@ -401,68 +434,28 @@ $(document).ready(function () {
       const maxWidth = $(canvas).parent().width();
       const maxHeight = $(canvas).parent().height();
       let width, height;
-
       if (maxWidth / maxHeight > aspectRatio) {
-        // 縦に余白ができる場合
         width = maxHeight * aspectRatio;
         height = maxHeight;
       } else {
-        // 横に余白ができる場合
         width = maxWidth;
         height = maxWidth / aspectRatio;
       }
-
       canvas.width = width;
       canvas.height = height;
       canvas.style.width = width + "px";
       canvas.style.height = height + "px";
-      ctx.drawImage(img, 0, 0, width, height); // サイズを指定して描画する
-    };
-
-    img.onerror = function () {
-      console.error("Failed to load image:", img.src);
+      ctx.drawImage(img, 0, 0, width, height);
     };
   });
 
-  $("#stationViewCanvas").click(function (event) {
-    var x = event.offsetX;
-    var y = event.offsetY;
-
-    const canvas = document.getElementById("stationViewCanvas");
-    const ctx = canvas.getContext("2d");
-
-    // 新しいピンを描画する
-    const pin = document.querySelector(".pin");
-    const canvasOffsetLeft = canvas.offsetLeft;
-    const canvasOffsetTop = canvas.offsetTop;
-    pin.style.left = x + canvasOffsetLeft - 5 + "px";
-    pin.style.top = y + canvasOffsetTop - 5 + "px";
-    pin.classList.remove("hide");
-
-    // 新しいマーカーの座標を保存する
-    markerX = x;
-    markerY = y;
-
-    // X座標を設定する
-    $("#Xnum").val(markerX);
-
-    // Y座標を設定する
-    $("#Ynum").val(markerY);
-
-    // 背景画像を再描画する
-    const img = new Image();
-    img.src = "../../images/station/" + $("#station").val() + ".png";
-    img.onload = function () {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    };
-  });
-
-  $(document).on("click", ".returnSubway", function () {
-    $("#canvasContainer").addClass("hide");
-    $("#subway").removeClass("hide");
-    $("#station").val("");
-    $(".pin").addClass("hide");
-
-  });
+    $(document).on("click", ".returnSubway", function () {
+      $("#canvasContainer").addClass("hide");
+      $("#subway").removeClass("hide");
+      $("#station").val("");
+      $(".pin").addClass("hide");
+    });
+	$(".pin .pin-after-content").on("click", function () {
+	alert("Clicked pseudo-element");
+	});
 });

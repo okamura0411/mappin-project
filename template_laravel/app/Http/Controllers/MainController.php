@@ -21,7 +21,6 @@ class MainController extends Controller {
     public function emailTemplateSystem() {
         return view('pages/system');
     }
-
     public function galleryV1() {
         return view('pages/gallery-v1');
     }
@@ -67,4 +66,34 @@ class MainController extends Controller {
         // リダイレクト先を設定する
         return redirect('/home');
     }
+    // sample.txtから情報を取ってくる。
+        public function getSampleData()
+    {
+        $fileContents = file_get_contents(storage_path('app/sample.txt'));
+        $data = $this->parseData($fileContents);
+        return response()->json($data);
+    }
+
+    private function parseData($text)
+    {
+        $rows = explode("\n", trim($text));
+        $data = [];
+        foreach ($rows as $row) {
+            list($station, $place, $xnum, $ynum, $detail, $quantity, $whose, $action, $remarks, $filename) = explode(",", $row, 10);
+            $data[] = [
+                'station' => $station,
+                'place' => $place,
+                'xnum' => floatval(str_replace('Xnum:', '', $xnum)),
+                'ynum' => floatval(str_replace('Ynum:', '', $ynum)),
+                'detail' => $detail,
+                'quantity' => $quantity,
+                'whose' => $whose,
+                'action' => $action,
+                'remarks' => $remarks,
+                'filename' => $filename,
+            ];
+        }
+        return $data;
+    }
+
 }
