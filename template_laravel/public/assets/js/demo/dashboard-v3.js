@@ -409,6 +409,7 @@ $(document).ready(function () {
 // }
 
 $(document).ready(function () {
+	  alert("jQuery is working");
 //   $("span").click(async function () {
     // let stationName = $(this).text();
     // $("#station").val(stationName);
@@ -448,9 +449,6 @@ $(document).ready(function () {
     //   ctx.drawImage(img, 0, 0, width, height);
     // };
 //   });
-	$(span).on("click",function(){
-		alert("aaa");
-	})
 
     $(document).on("click", ".returnSubway", function () {
       $("#canvasContainer").addClass("hide");
