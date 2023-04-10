@@ -410,43 +410,44 @@ function placePins(filteredData) {
 
 $(document).ready(function () {
   $("span").click(async function () {
-    let stationName = $(this).text();
-    $("#station").val(stationName);
-    $("#subway").addClass("hide");
-    $("#canvasContainer").removeClass("hide");
+	alert($(this).text());
+    // let stationName = $(this).text();
+    // $("#station").val(stationName);
+    // $("#subway").addClass("hide");
+    // $("#canvasContainer").removeClass("hide");
 
-    const data = await fetchSampleData(); // 関数を呼び出し、データを取得
-    console.log(data);
-    // ここで選択された駅名のデータだけをフィルタリングする
-    const filteredData = data.filter((item) => {
-      const stationValue = item.station.split(":")[1]; // 'station:' 以降の文字列を取得
-      return stationValue === stationName;
-    });
-    console.log(filteredData); // フィルタリングされたデータを表示
-    placePins(filteredData); // 取得したデータを使ってピンを配置
+    // const data = await fetchSampleData(); // 関数を呼び出し、データを取得
+    // console.log(data);
+    // // ここで選択された駅名のデータだけをフィルタリングする
+    // const filteredData = data.filter((item) => {
+    //   const stationValue = item.station.split(":")[1]; // 'station:' 以降の文字列を取得
+    //   return stationValue === stationName;
+    // });
+    // console.log(filteredData); // フィルタリングされたデータを表示
+    // placePins(filteredData); // 取得したデータを使ってピンを配置
 
-    const canvas = document.getElementById("stationViewCanvas");
-    const ctx = canvas.getContext("2d");
-    const img = new Image();
-    img.src = "../../images/station/" + stationName + ".png";
-    img.onload = function () {
-      const aspectRatio = img.width / img.height;
-      const maxWidth = $(canvas).parent().width();
-      const maxHeight = $(canvas).parent().height();
-      let width, height;
-      if (maxWidth / maxHeight > aspectRatio) {
-        width = maxHeight * aspectRatio;
-        height = maxHeight;
-      } else {
-        width = maxWidth;
-        height = maxWidth / aspectRatio;
-      }
-      canvas.width = width;
-      canvas.height = height;
-      canvas.style.width = width + "px";
-      canvas.style.height = height + "px";
-      ctx.drawImage(img, 0, 0, width, height);
-    };
+    // const canvas = document.getElementById("stationViewCanvas");
+    // const ctx = canvas.getContext("2d");
+    // const img = new Image();
+    // img.src = "../../images/station/" + stationName + ".png";
+    // img.onload = function () {
+    //   const aspectRatio = img.width / img.height;
+    //   const maxWidth = $(canvas).parent().width();
+    //   const maxHeight = $(canvas).parent().height();
+    //   let width, height;
+    //   if (maxWidth / maxHeight > aspectRatio) {
+    //     width = maxHeight * aspectRatio;
+    //     height = maxHeight;
+    //   } else {
+    //     width = maxWidth;
+    //     height = maxWidth / aspectRatio;
+    //   }
+    //   canvas.width = width;
+    //   canvas.height = height;
+    //   canvas.style.width = width + "px";
+    //   canvas.style.height = height + "px";
+    //   ctx.drawImage(img, 0, 0, width, height);
+    // };
   });
 
     $(document).on("click", ".returnSubway", function () {
@@ -455,7 +456,5 @@ $(document).ready(function () {
       $("#station").val("");
       $(".pin").addClass("hide");
     });
-	$(".pin .pin-after-content").on("click", function () {
-	alert("Clicked pseudo-element");
-	});
+
 });
