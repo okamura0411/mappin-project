@@ -97,6 +97,8 @@
 							<div id="viewContainer">
 								<canvas id="stationViewCanvas"></canvas>
 							</div>
+							    @php
+								@endphp
 								<!-- ここにピンを追加する -->
 							<div class="returnSubway">路線図に戻る。</div>
 						</div>

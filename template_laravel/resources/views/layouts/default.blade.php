@@ -2,6 +2,8 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
 	@include('includes.head')
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>
 @php
 	$bodyClass = (!empty($appBoxedLayout)) ? 'boxed-layout ' : '';
