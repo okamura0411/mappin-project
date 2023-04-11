@@ -391,6 +391,7 @@ async function fetchSampleData() {
 }
 
 // 取得した情報からピンを表示する関数
+// 取得した情報からピンを表示する関数
 function placePins(filteredData) {
   const stationViewCanvas = document.getElementById("stationViewCanvas");
   const viewContainer = document.getElementById("viewContainer");
@@ -403,12 +404,20 @@ function placePins(filteredData) {
     const pin = document.createElement("div");
     const x = item.xnum;
     const y = item.ynum;
-    pin.style.left = `${x/1.08}px`; // viewContainer要素の左端からの距離
-    pin.style.top = `${y/1.08}px`; // viewContainer要素の上端からの距離
+    pin.style.left = `${x/1.083}px`; // viewContainer要素の左端からの距離
+    pin.style.top = `${y/1.083}px`; // viewContainer要素の上端からの距離
     pin.classList.add("pin");
+
+    // クリックイベントリスナーを追加
+    pin.addEventListener("click", function () {
+      console.log("Pin clicked.");
+      // ここにクリックされたときの処理を追加
+    });
+
     viewContainer.appendChild(pin);
   });
 }
+
 
 $(document).ready(function () {
     $("span").click(async function () {
