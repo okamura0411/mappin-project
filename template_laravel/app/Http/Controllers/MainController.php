@@ -96,16 +96,5 @@ class MainController extends Controller {
         }
         return $data;
     }
-        public function removeImage(Request $request)
-    {
-        $imageDir = $request->input('image_dir');
-
-        if (File::exists(public_path('uploads/images' . $imageDir))) {
-            File::delete(public_path('uploads/images' . $imageDir));
-            return response()->json(['success' => 'Image deleted successfully.']);
-        } else {
-            return response()->json(['error' => 'Failed to delete image.'], 400);
-        }
-    }
 
 }
