@@ -391,7 +391,6 @@ async function fetchSampleData() {
 }
 
 // 取得した情報からピンを表示する関数
-// 取得した情報からピンを表示する関数
 function placePins(filteredData) {
   const stationViewCanvas = document.getElementById("stationViewCanvas");
   const viewContainer = document.getElementById("viewContainer");
@@ -461,9 +460,6 @@ $(document).ready(function () {
     });
 
   $(document).on("click", ".returnSubway", function () {
-    $("#canvasContainer").addClass("hide");
-    $("#subway").removeClass("hide");
-    $("#station").val("");
-    $(".pin").addClass("hide");
+    location.reload();
   });
 });

@@ -14,3 +14,4 @@ Route::get('/login/v3', 'MainController@loginV3')->name('login-v3');
 Route::get('/register/v3', 'MainController@registerV3')->name('register-v3');
 Route::post('/store', [App\Http\Controllers\MainController::class, 'store'])->name('store');
 Route::get('/sample-data', [App\Http\Controllers\MainController::class, 'getSampleData']);
+Route::post('/remove_image', [App\Http\Controllers\MainController::class, 'removeImage']);

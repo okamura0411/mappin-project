@@ -379,12 +379,11 @@ $(document).ready(function () {
 
 
 
-Dropzone.options.uploadForm = {
+ropzone.options.uploadForm = {
   autoProcessQueue: false,
   uploadMultiple: true,
   parallelUploads: 100,
   maxFiles: 10,
-  
 
   init: function () {
     let myDropzone = this,
@@ -396,7 +395,7 @@ Dropzone.options.uploadForm = {
       myDropzone.processQueue();
     });
 
-	  function clearInputs() {
+      function clearInputs() {
       const form = document.querySelector("#upload-form");
       const inputs = form.querySelectorAll("input, textarea");
       inputs.forEach((input) => {
@@ -426,10 +425,10 @@ Dropzone.options.uploadForm = {
     myDropzone.on("errormultiple", function (files, response) {
       // フォームの送信後の処理
 	  setTimeout(function () {
-		alert("正常に登録完了しました！");
-		clearInputs();
-        myDropzone.removeAllFiles(); // dropzoneに表示されているファイルを全て削除
-      }, 1300); // 1秒後に実行するように指定
+      alert("正常に登録完了しました！");
+      clearInputs();
+      myDropzone.removeAllFiles(); // dropzoneに表示されているファイルを全て削除
+    }, 1300); // 1秒後に実行するように指定
     });
   },
 };
