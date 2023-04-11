@@ -295,7 +295,6 @@ var Dashboard = function () {
 $(document).ready(function() {
 	Dashboard.init();
 });
-
 // stationCanvasの表示・処理を記載
 $(document).ready(function () {
   $("span").click(function () {
@@ -379,11 +378,12 @@ $(document).ready(function () {
 
 
 
-ropzone.options.uploadForm = {
+Dropzone.options.uploadForm = {
   autoProcessQueue: false,
   uploadMultiple: true,
   parallelUploads: 100,
   maxFiles: 10,
+  
 
   init: function () {
     let myDropzone = this,
@@ -395,7 +395,7 @@ ropzone.options.uploadForm = {
       myDropzone.processQueue();
     });
 
-      function clearInputs() {
+	  function clearInputs() {
       const form = document.querySelector("#upload-form");
       const inputs = form.querySelectorAll("input, textarea");
       inputs.forEach((input) => {
@@ -425,10 +425,10 @@ ropzone.options.uploadForm = {
     myDropzone.on("errormultiple", function (files, response) {
       // フォームの送信後の処理
 	  setTimeout(function () {
-      alert("正常に登録完了しました！");
-      clearInputs();
-      myDropzone.removeAllFiles(); // dropzoneに表示されているファイルを全て削除
-    }, 1300); // 1秒後に実行するように指定
+		alert("正常に登録完了しました！");
+		clearInputs();
+        myDropzone.removeAllFiles(); // dropzoneに表示されているファイルを全て削除
+      }, 1300); // 1秒後に実行するように指定
     });
   },
 };

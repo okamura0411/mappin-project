@@ -18,12 +18,13 @@ return [
 		'title' => '地図で見る',
 		'url' => '/dashboard/v3',
 		'route-name' => 'dashboard-v3'
-	],[
-		'icon' => 'fa fa-star',
-		'title' => '緊急対応(comming soon)',
-		'url' => '/dashboard/v2',
-		'route-name' => 'dashboard-v2'
 	]
+	// ,[
+	// 	'icon' => 'fa fa-star',
+	// 	'title' => '緊急対応(comming soon)',
+	// 	'url' => '/dashboard/v2',
+	// 	'route-name' => 'dashboard-v2'
+	// ]
 	// ,[
 	// 	'icon' => 'fa fa-star',
 	// 	'title' => 'dropzone',
