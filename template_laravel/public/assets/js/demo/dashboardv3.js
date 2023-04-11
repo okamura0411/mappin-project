@@ -404,8 +404,8 @@ function placePins(filteredData) {
     const pin = document.createElement("div");
     const x = item.xnum;
     const y = item.ynum;
-    pin.style.left = `${x/1.083}px`; // viewContainer要素の左端からの距離
-    pin.style.top = `${y/1.083}px`; // viewContainer要素の上端からの距離
+    pin.style.left = `${x/1.08}px`; // viewContainer要素の左端からの距離
+    pin.style.top = `${y/1.08}px`; // viewContainer要素の上端からの距離
     pin.classList.add("pin");
 
     // クリックイベントリスナーを追加
