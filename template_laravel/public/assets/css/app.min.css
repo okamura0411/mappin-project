@@ -34585,7 +34585,9 @@ a.editable-click:hover {
   display: none !important;
 }
 
-
+#stationViewCanvas {
+  z-index: 1;
+}
 
 .pin {
   width: 30px;
@@ -34618,6 +34620,7 @@ a.editable-click:hover {
   animation-duration: 1s;
   transform-origin: 0 8px;
   pointer-events: none;
+  z-index: 10;
 }
 
 .pin:after {
