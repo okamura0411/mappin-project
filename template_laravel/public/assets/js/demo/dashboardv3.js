@@ -406,58 +406,90 @@ function placePins(filteredData) {
     pin.style.left = `${x/1.08}px`; // viewContainer要素の左端からの距離
     pin.style.top = `${y/1.08}px`; // viewContainer要素の上端からの距離
     pin.classList.add("pin");
-
-    // クリックイベントリスナーを追加
-    pin.addEventListener("click", function () {
-      console.log("Pin clicked.");
-      // ここにクリックされたときの処理を追加
-    });
-
     viewContainer.appendChild(pin);
   });
 }
 
 
+
+
 $(document).ready(function () {
-    $("span").click(async function () {
+  $("span").click(async function () {
     let stationName = $(this).text();
     $("#station").val(stationName);
     $("#subway").addClass("hide");
     $("#canvasContainer").removeClass("hide");
 
-  const data = await fetchSampleData(); // 関数を呼び出し、データを取得
-  console.log(data);
-  // ここで選択された駅名のデータだけをフィルタリングする
-  const filteredData = data.filter((item) => {
-    const stationValue = item.station.split(":")[1]; // 'station:' 以降の文字列を取得
-    return stationValue === stationName;
-  });
-  console.log(filteredData); // フィルタリングされたデータを表示
-  placePins(filteredData); // 取得したデータを使ってピンを配置
-
-  const canvas = document.getElementById("stationViewCanvas");
-  const ctx = canvas.getContext("2d");
-  const img = new Image();
-  img.src = "../../images/station/" + stationName + ".png";
-  img.onload = function () {
-    const aspectRatio = img.width / img.height;
-    const maxWidth = $(canvas).parent().width();
-    const maxHeight = $(canvas).parent().height();
-    let width, height;
-    if (maxWidth / maxHeight > aspectRatio) {
-      width = maxHeight * aspectRatio;
-      height = maxHeight;
-    } else {
-      width = maxWidth;
-      height = maxWidth / aspectRatio;
-    }
-    canvas.width = width;
-    canvas.height = height;
-    canvas.style.width = width + "px";
-    canvas.style.height = height + "px";
-    ctx.drawImage(img, 0, 0, width, height);
-  };
+    const data = await fetchSampleData(); // 関数を呼び出し、データを取得
+    console.log(data);
+    // ここで選択された駅名のデータだけをフィルタリングする
+    const filteredData = data.filter((item) => {
+      const stationValue = item.station.split(":")[1]; // 'station:' 以降の文字列を取得
+      return stationValue === stationName;
     });
+    console.log(filteredData); // フィルタリングされたデータを表示
+    placePins(filteredData); // 取得したデータを使ってピンを配置
+
+    const canvas = document.getElementById("stationViewCanvas");
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    img.src = "../../images/station/" + stationName + ".png";
+    img.onload = function () {
+      const aspectRatio = img.width / img.height;
+      const maxWidth = $(canvas).parent().width();
+      const maxHeight = $(canvas).parent().height();
+      let width, height;
+      if (maxWidth / maxHeight > aspectRatio) {
+        width = maxHeight * aspectRatio;
+        height = maxHeight;
+      } else {
+        width = maxWidth;
+        height = maxWidth / aspectRatio;
+      }
+      canvas.width = width;
+      canvas.height = height;
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+      ctx.drawImage(img, 0, 0, width, height);
+    };
+
+    // .pinをクリックした時の処理
+    $(document).on("click", ".pin", function () {
+      alert("aaa");
+    });
+    // .pin 要素を取得
+    const pinElements = document.querySelectorAll(".pin");
+    // それぞれの .pin 要素に対して処理を行う
+    pinElements.forEach((pinElement) => {
+      // ページロード時に .pin-init クラスを追加
+      pinElement.classList.add("pin-init");
+
+      // Pin 要素にマウスオーバーイベントリスナーを追加
+      pinElement.addEventListener("mouseover", () => {
+        // .pin-hover クラスを追加し、.pin-init クラスを削除
+        pinElement.classList.add("pin-hover");
+        pinElement.classList.remove("pin-init");
+
+        // ホバーしているピン以外のピンの透過度を0.5にする
+        pinElements.forEach((otherPinElement) => {
+          if (otherPinElement !== pinElement) {
+            otherPinElement.style.opacity = 0.5;
+          }
+        });
+      });
+
+      // Pin 要素にマウスアウトイベントリスナーを追加
+      pinElement.addEventListener("mouseout", () => {
+        // .pin-hover クラスを削除
+        pinElement.classList.remove("pin-hover");
+
+        // すべてのピンの透過度を1に戻す
+        pinElements.forEach((otherPinElement) => {
+          otherPinElement.style.opacity = 1;
+        });
+      });
+    });
+  });
 
   $(document).on("click", ".returnSubway", function () {
     location.reload();

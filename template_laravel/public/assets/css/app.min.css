@@ -34579,7 +34579,6 @@ a.editable-click:hover {
   --bs-bg-opacity: 1.05;
 }
 
-/* Helper Display */
 /* 記載開始 */
 .hide {
   display: none !important;
@@ -34603,28 +34602,17 @@ a.editable-click:hover {
   left: 60%;
   top: 60%;
   margin: -20px 0 0 -12px;
-  -webkit-animation-name: bounce;
-  -moz-animation-name: bounce;
-  -o-animation-name: bounce;
-  -ms-animation-name: bounce;
-  animation-name: bounce;
-  -webkit-animation-fill-mode: both;
-  -moz-animation-fill-mode: both;
-  -o-animation-fill-mode: both;
-  -ms-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation-duration: 1s;
-  -moz-animation-duration: 1s;
-  -o-animation-duration: 1s;
-  -ms-animation-duration: 1s;
-  animation-duration: 1s;
   transform-origin: 0 8px;
-  pointer-events: none;
-  z-index: 10;
+  z-index: 99;
+}
+.pin-init {
+  animation-name: bounce;
+  animation-fill-mode: both;
+  animation-duration: 1s;
 }
 
 .pin:after {
-  content: '';
+  content:'';
   width: 14px;
   height: 14px;
   margin: -7px 0 0 -7px;
@@ -34640,6 +34628,30 @@ a.editable-click:hover {
   transform: rotate(45deg);
   pointer-events: none;
 }
+
+.pin {
+  /* ... */
+  transition: opacity 0.3s; /* 透明度の変化にアニメーションを追加 */
+}
+
+.pin-hover {
+  animation: moveUpDown 0.25s infinite alternate; /* 上下に動かすアニメーションを適用 */
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0) rotate(-45deg);
+  }
+  100% {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+}
+
+.pin-dimmed {
+  opacity: 0.5;
+}
+
+
 
 @-moz-keyframes pulsate {
   0% {
