@@ -466,7 +466,6 @@ $(document).ready(function () {
           $("select[name='whose']").val(matchedData.whose.split(":")[1]);
           $("select[name='action']").val(matchedData.action.split(":")[1]);
           $("textarea[name='remarks']").val(matchedData.remarks.split(":")[1]);
-
           // Handle multiple filenames
           const filenames = matchedData.filename.split(":")[1].split(",");
           $("#preview").empty(); // Clear the preview div
