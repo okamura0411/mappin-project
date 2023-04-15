@@ -34,7 +34,7 @@
 		</div>
 	</div>
 @php
-    $fileContents = file_get_contents(storage_path('app/sample.txt')); // ファイルの内容を文字列で取得
+    $fileContents = file_get_contents(storage_path('app/sample.txt'));
     $lines = explode("\n", $fileContents); // 改行で分割して配列に格納
     $data = array(); // 出力するデータを格納するための配列
     foreach ($lines as $line) {
@@ -70,29 +70,37 @@
         $data[] = $params;
     }
 @endphp
-
 	<div id="gallery" class="gallery" style="display:flex;">
 @foreach($data as $item)
     @php
         $filename = explode(',', $item['filename'])[0];
     @endphp
-
     <div class="image gallery-group-1">
         <div class="image-inner">
             <a href="/storage/{{ $filename }}" data-lightbox="gallery-group-1">
                 <div class="img" style="background-image: url(/storage/{{ $filename }})"></div>
             </a>
             <p class="image-caption">
-                No.1166 - {{ $item['station'] }}
+                No.{{ $item['id'] }} - {{ $item['station'] }}
             </p>
         </div>
         <div class="image-info">
             <h5 class="title">{{ $item['detail'] }}</h5>
             <div class="d-flex align-items-center mb-2">
                 <div class="rating">
-                    <span class="star active"></span>
-                    <span class="star active"></span>
-                    <span class="star"></span>
+                    @if ($item['action'] == '経過観察')
+                        <span class="star active"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                    @elseif ($item['action'] == '通常補修')
+                        <span class="star active"></span>
+                        <span class="star active"></span>
+                        <span class="star"></span>
+                    @elseif ($item['action'] == '緊急対応')
+                        <span class="star active"></span>
+                        <span class="star active"></span>
+                        <span class="star active"></span>
+                    @endif
                     <p>{{ $item['action'] }}</p>
                 </div>
                 <div class="ms-auto">

@@ -403,15 +403,15 @@ function placePins(filteredData) {
     const pin = document.createElement("div");
     const x = item.xnum;
     const y = item.ynum;
-    pin.style.left = `${x/1.08}px`; // viewContainer要素の左端からの距離
-    pin.style.top = `${y/1.08}px`; // viewContainer要素の上端からの距離
+    pin.style.left = `${x / 1.08}px`; // viewContainer要素の左端からの距離
+    pin.style.top = `${y / 1.08}px`; // viewContainer要素の上端からの距離
     pin.classList.add("pin");
+    // item.id を data-id 属性として追加
+    const idNumber = item.id.match(/:(\d+)/)[1];
+    pin.setAttribute("data-id", idNumber);
     viewContainer.appendChild(pin);
   });
 }
-
-
-
 
 $(document).ready(function () {
   $("span").click(async function () {
@@ -421,13 +421,11 @@ $(document).ready(function () {
     $("#canvasContainer").removeClass("hide");
 
     const data = await fetchSampleData(); // 関数を呼び出し、データを取得
-    console.log(data);
     // ここで選択された駅名のデータだけをフィルタリングする
     const filteredData = data.filter((item) => {
       const stationValue = item.station.split(":")[1]; // 'station:' 以降の文字列を取得
       return stationValue === stationName;
     });
-    console.log(filteredData); // フィルタリングされたデータを表示
     placePins(filteredData); // 取得したデータを使ってピンを配置
 
     const canvas = document.getElementById("stationViewCanvas");
@@ -451,12 +449,37 @@ $(document).ready(function () {
       canvas.style.width = width + "px";
       canvas.style.height = height + "px";
       ctx.drawImage(img, 0, 0, width, height);
+
+      // .pinをクリックした時の処理
+      $(document).on("click", ".pin", function () {
+        const dataId = $(this).attr("data-id");
+        const ID = ("id:" + dataId);
+        const matchedData = data.find((dataItem) => dataItem.id === ID);
+
+        if (matchedData) {
+          console.log(matchedData);
+          $("input[name='place']").val(matchedData.place.split(":")[1]);
+          $("input[name='Xnum']").val(matchedData.xnum);
+          $("input[name='Ynum']").val(matchedData.ynum);
+          $("input[name='detail']").val(matchedData.detail.split(":")[1]);
+          $("input[name='quantity']").val(matchedData.quantity.split(":")[1]);
+          $("select[name='whose']").val(matchedData.whose.split(":")[1]);
+          $("select[name='action']").val(matchedData.action.split(":")[1]);
+          $("textarea[name='remarks']").val(matchedData.remarks.split(":")[1]);
+
+          // Handle multiple filenames
+          const filenames = matchedData.filename.split(":")[1].split(",");
+          $("#preview").empty(); // Clear the preview div
+          filenames.forEach((filename) => {
+            const imgElem = `<div style="display: inline-block; width: 240px; height: 200px; overflow: hidden; margin-right: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);"><img src="/storage/${filename}" alt="" style="width: 240px; height: 200px; object-fit: cover;"></div>`;
+            $("#preview").append(imgElem);
+          });
+        } else {
+          alert("データが存在しません。")
+        }
+      });
     };
 
-    // .pinをクリックした時の処理
-    $(document).on("click", ".pin", function () {
-      alert("aaa");
-    });
     // .pin 要素を取得
     const pinElements = document.querySelectorAll(".pin");
     // それぞれの .pin 要素に対して処理を行う

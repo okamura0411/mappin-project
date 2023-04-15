@@ -1,7 +1,5 @@
 @extends('layouts.default')
-
 @section('title', 'Dashboard V1')
-
 @push('css')
 	<link href="/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
 	<link href="/assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
@@ -11,7 +9,6 @@
 	<link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 @endpush
-
 @push('scripts')
 	<script src="/assets/plugins/flot/source/jquery.canvaswrapper.js"></script>
 	<script src="/assets/plugins/flot/source/jquery.colorhelpers.js"></script>
@@ -36,9 +33,7 @@
 	<script src="/assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
 	<script src="/assets/plugins/jvectormap-content/world-mill.js"></script>
 	<script src="/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-
 @endpush
-
 @section('content')
 	<!-- BEGIN row -->
 		<div class="row">
@@ -97,8 +92,6 @@
 							<div id="viewContainer">
 								<canvas id="stationViewCanvas"></canvas>
 							</div>
-							    @php
-								@endphp
 								<!-- ここにピンを追加する -->
 							<div class="returnSubway">路線図に戻る。</div>
 						</div>
@@ -185,7 +178,6 @@
 
 										<td>
 										<select name="action">
-										<!-- <option value="" selected disabled>選択してください</option> -->
 											<option value="経過観察">経過観察</option>			
 											<option value="通常補修">通常補修</option>
 											<option value="緊急対応">緊急対応</option>
@@ -209,8 +201,23 @@
 			</div>
 		</div>
 	<!-- END row -->
+			<style>
+			.image-container {
+				display: inline-block;
+				margin: 10px;
+				padding: 10px;
+				background-color: #f0f0f0;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+				border-radius: 4px;
+			}
+			.image-container img {
+				width: 240px;
+				height: 200px;
+				object-fit: cover;
+				border-radius: 4px;
+			}
+			</style>
 		<div id="preview">
-		ここに画像が表示される。
 		</div>
 
 		<script src="/assets/js/demo/dashboardv3.js"></script>

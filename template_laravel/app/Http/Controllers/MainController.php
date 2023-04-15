@@ -35,38 +35,38 @@ class MainController extends Controller {
         return view('pages/dropzone');
     }
 
-    public function store(Request $request)
-    {
-        // フォームデータを取得する
-        $station = $request->input('station');
-        $place = $request->input('place');
-        $Xnum = $request->input('Xnum');
-        $Ynum = $request->input('Ynum');
-        $detail = $request->input('detail');
-        $quantity = $request->input('quantity');
-        $whose = $request->input('whose');
-        $action = $request->input('action');
-        $remarks = $request->input('remarks');
+public function store(Request $request)
+{
+    // フォームデータを取得する
+    $id = $request->input('id');
+    $station = $request->input('station');
+    $place = $request->input('place');
+    $Xnum = $request->input('Xnum');
+    $Ynum = $request->input('Ynum');
+    $detail = $request->input('detail');
+    $quantity = $request->input('quantity');
+    $whose = $request->input('whose');
+    $action = $request->input('action');
+    $remarks = $request->input('remarks');
 
-      // アップロードされたファイルを保存する
-        $fileNames = [];
-        foreach ($request->file('file') as $file) {
-            // ファイル名をUTF-8に変換する
-            $fileName = mb_convert_encoding($file->getClientOriginalName(), 'UTF-8', 'auto');
-            // ファイルをstorage/app/public/に保存する
-            $filePath = $file->storeAs('public', $fileName);
-            // 保存されたファイルのパスを配列に追加する
-            $fileNames[] = $fileName;
-        }
-
-        // フォームデータとファイル名をテキストファイルに保存する
-        $data = "station:{$station},place:{$place},Xnum:{$Xnum},Ynum:{$Ynum},detail:{$detail},quantity:{$quantity},whose:{$whose},action:{$action},remarks:{$remarks},filename:" . implode(',', $fileNames);
-        Storage::append('sample.txt', $data);
-
-        
-        // リダイレクト先を設定する
-        return redirect('/home');
+    // アップロードされたファイルを保存する
+    $fileNames = [];
+    foreach ($request->file('file') as $file) {
+        // ファイル名をUTF-8に変換する
+        $fileName = mb_convert_encoding($file->getClientOriginalName(), 'UTF-8', 'auto');
+        // ファイルをstorage/app/public/に保存する
+        $filePath = $file->storeAs('public', $fileName);
+        // 保存されたファイルのパスを配列に追加する
+        $fileNames[] = $fileName;
     }
+    // フォームデータとファイル名をテキストファイルに保存する
+    $data = "id:{$id},station:{$station},place:{$place},Xnum:{$Xnum},Ynum:{$Ynum},detail:{$detail},quantity:{$quantity},whose:{$whose},action:{$action},remarks:{$remarks},filename:" . implode(',', $fileNames);
+    Storage::append('sample.txt', $data);
+    // リダイレクト先を設定する
+    return redirect('/home');
+}
+
+
     // sample.txtから情報を取ってくる。
         public function getSampleData()
     {
@@ -80,8 +80,9 @@ class MainController extends Controller {
         $rows = explode("\n", trim($text));
         $data = [];
         foreach ($rows as $row) {
-            list($station, $place, $xnum, $ynum, $detail, $quantity, $whose, $action, $remarks, $filename) = explode(",", $row, 10);
+            list($id, $station, $place, $xnum, $ynum, $detail, $quantity, $whose, $action, $remarks, $filename) = explode(",", $row, 11);
             $data[] = [
+                'id' => $id,
                 'station' => $station,
                 'place' => $place,
                 'xnum' => floatval(str_replace('Xnum:', '', $xnum)),

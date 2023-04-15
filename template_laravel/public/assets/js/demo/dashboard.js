@@ -402,17 +402,22 @@ Dropzone.options.uploadForm = {
         input.value = "";
       });
     }
-    myDropzone.on("sendingmultiple", function (data, xhr, formData) {
-      formData.append("station", document.getElementById("station").value);
-      formData.append("place", document.getElementsByName("place")[0].value);
-      formData.append("Xnum", document.getElementById("Xnum").value);
-      formData.append("Ynum", document.getElementById("Ynum").value);
-      formData.append("detail", document.getElementsByName("detail")[0].value);
-      formData.append("quantity",document.getElementsByName("quantity")[0].value);
-      formData.append("whose", document.getElementsByName("whose")[0].value);
-      formData.append("action", document.getElementsByName("action")[0].value);
-      formData.append("remarks",document.getElementsByName("remarks")[0].value);
-    });
+myDropzone.on("sendingmultiple", function (data, xhr, formData) {
+  // ユニークなIDの生成
+  const timestamp = Date.now();
+  const uniqueId = timestamp % 1000000; // 6桁のIDに制限
+  formData.append("id", uniqueId);
+  formData.append("station", document.getElementById("station").value);
+  formData.append("place", document.getElementsByName("place")[0].value);
+  formData.append("Xnum", document.getElementById("Xnum").value);
+  formData.append("Ynum", document.getElementById("Ynum").value);
+  formData.append("detail", document.getElementsByName("detail")[0].value);
+  formData.append("quantity", document.getElementsByName("quantity")[0].value);
+  formData.append("whose", document.getElementsByName("whose")[0].value);
+  formData.append("action", document.getElementsByName("action")[0].value);
+  formData.append("remarks", document.getElementsByName("remarks")[0].value);
+});
+
 
     myDropzone.on("sending", function (file, xhr, formData) {
       formData.append("filename", file.name);
