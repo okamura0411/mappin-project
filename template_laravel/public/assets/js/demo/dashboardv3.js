@@ -471,7 +471,7 @@ $(document).ready(function () {
           const filenames = matchedData.filename.split(":")[1].split(",");
           $("#preview").empty(); // Clear the preview div
           filenames.forEach((filename) => {
-            const imgElem = `<div style="display: inline-block; width: 240px; height: 200px; overflow: hidden; margin-right: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);"><img src="/storage/${filename}" alt="" style="width: 240px; height: 200px; object-fit: cover;"></div>`;
+            const imgElem = `<div style="display: inline-block; width: 240px; height: 200px; overflow: hidden; margin: 10px 10px 10px 0px; box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1), 0 3px 3px rgba(0, 0, 0, 0.08);"><img src="/storage/${filename}" alt="" style="width: 240px; height: 200px; border-radius:4px; object-fit: cover;"></div>`;
             $("#preview").append(imgElem);
           });
         } else {
