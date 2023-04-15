@@ -221,5 +221,6 @@
 		</div>
 
 		<script src="/assets/js/demo/dashboardv3.js"></script>
+		<script src="/assets/js/demo/dashboardVer3.js"></script>
 
 @endsection
