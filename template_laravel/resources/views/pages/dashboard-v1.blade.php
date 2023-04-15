@@ -209,5 +209,5 @@
 		</div>
 	</form>
 	<script src="/assets/plugins/dropzone/dist/min/dropzone.min.js"></script>
-	<script src="/assets/js/demo/dashboard.js"></script>
+	<script src="/assets/js/demo/dashboardVer.js"></script>
 @endsection
